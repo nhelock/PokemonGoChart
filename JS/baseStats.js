@@ -4,6 +4,8 @@ let pokemonNames = [];
 let chart = null;
 let dynamaxChart = null;
 let dynamaxMode = 'attack'; // default
+let gmaxMode = 'dmax'; // 'dmax' or 'gmax'
+
 
 
 // Load data on page load
@@ -125,7 +127,8 @@ function drawDynamaxChart() {
 
     if (dynamaxMode === 'attack') {
         const defenseBaseline = parseInt(document.getElementById("defenseBaseline").value);
-        const movePowers = [250, 300, 350];
+        const movePowers = gmaxMode === 'gmax' ? [350, 400, 450] : [250, 300, 350];
+
 
         const datasets = movePowers.map((power, idx) => {
             const data = levels.map(level => {
@@ -138,7 +141,7 @@ function drawDynamaxChart() {
             return {
                 label: `Move Level ${idx + 1} (${power} Power)`,
                 data: data,
-                borderColor: idx === 0 ? 'purple' : idx === 1 ? 'orange' : 'gold',
+                borderColor: idx === 0 ? 'pink' : idx === 1 ? 'fuchsia' : 'purple',
                 fill: false,
             };
         });
@@ -226,12 +229,30 @@ function setDynamaxMode(mode) {
         document.getElementById("attackBtn").classList.add("activeMode");
         document.querySelector(".dynamaxNote").innerText = "This chart shows how Dynamax move damage scales with level and move strength, using the selected opponent defense.";
         document.getElementById("defenseSection").style.display = "block";
+        document.getElementById("gmaxToggle").style.display = "block";
     } else {
         document.getElementById("spiritBtn").classList.add("activeMode");
         document.querySelector(".dynamaxNote").innerText = "This chart shows how much HP is returned from Max Spirit, based on your Pokémon’s HP at each level.";
         document.getElementById("defenseSection").style.display = "none";
+        document.getElementById("gmaxToggle").style.display = "none";
+    }
+
+}
+
+function setGmaxMode(mode) {
+    gmaxMode = mode;
+    drawDynamaxChart();
+
+    document.getElementById("dmaxBtn").classList.remove("activeMode");
+    document.getElementById("gmaxBtn").classList.remove("activeMode");
+
+    if (mode === 'dmax') {
+        document.getElementById("dmaxBtn").classList.add("activeMode");
+    } else {
+        document.getElementById("gmaxBtn").classList.add("activeMode");
     }
 }
+
 
 
 function showSuggestions() {
@@ -262,3 +283,19 @@ document.addEventListener("click", function (e) {
         document.getElementById("suggestions").innerHTML = '';
     }
 });
+
+document.getElementById("searchBar").addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+        const input = document.getElementById("searchBar");
+        const suggestions = document.querySelectorAll(".suggestionItem");
+
+        // If suggestions are shown, use the first one
+        if (suggestions.length > 0) {
+            input.value = suggestions[0].innerText;
+        }
+
+        document.getElementById("suggestions").innerHTML = '';
+        searchPokemon();
+    }
+});
+

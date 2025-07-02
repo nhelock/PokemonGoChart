@@ -5,7 +5,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <header>Welcome to the Webpage!</header>
+    <header>Pokémon GO Tool Created by Oathborn / WaywardOath</header>
     <div class="titleBox">
         <p class="titleText">Pokémon Stat Calculator</p>
     </div>
@@ -30,6 +30,12 @@
                 <button onclick="setDynamaxMode('spirit')" id="spiritBtn">Max Spirit</button>
             </div>
 
+            <div class="gmaxToggle" id="gmaxToggle" style="display: block;">
+                <button onclick="setGmaxMode('dmax')" id="dmaxBtn" class="activeMode">D-Max</button>
+                <button onclick="setGmaxMode('gmax')" id="gmaxBtn">G-Max</button>
+            </div>
+
+
             <div class="defenseSelector" id="defenseSection">
                 <label for="defenseBaseline">Opponent Defense:</label>
                 <select id="defenseBaseline" onchange="drawDynamaxChart()">
@@ -40,7 +46,7 @@
                 </select>
             </div>
 
-            <p class="dynamaxNote"></p>
+            <p class="dynamaxNote">This chart shows how Dynamax move damage scales with level and move strength, using the selected opponent defense.</p>
 
             <div class="graphData">
                 <canvas id="dynamaxChart"></canvas>
