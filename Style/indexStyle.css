@@ -4,6 +4,16 @@
     padding: 0;
 }
 
+/* Header */
+header{
+    height:50px;
+    background-color:#3e60b4;
+    color:white;
+    font-weight:bold;
+    justify-content:center;
+    text-align:center;
+}
+
 .titleText {
     font-size: 50px;
     color: #3e60b4;
@@ -73,3 +83,51 @@
     background-color: white;
     padding: 10px;
 }
+.dynamaxSection {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.defenseSelector {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+#dynamaxChart {
+    max-width: 900px;
+    margin: 0 auto;
+}
+.dynamaxNote {
+    text-align: center;
+    font-size: 16px;
+    margin: 10px 0;
+    color: #333;
+}
+.toggleButtons {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.toggleButtons button {
+    padding: 8px 16px;
+    margin: 0 5px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.toggleButtons .activeMode {
+    background-color: #3e60b4;
+    color: white;
+    font-weight: bold;
+}
+canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+
+
+

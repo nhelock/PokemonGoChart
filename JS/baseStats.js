@@ -2,15 +2,18 @@ let pokemonData = {};
 let cpMultiplierTable = {};
 let pokemonNames = [];
 let chart = null;
+let dynamaxChart = null;
+let dynamaxMode = 'attack'; // default
 
-// Load both JSON files on page load
+
+// Load data on page load
 window.onload = () => {
     Promise.all([
         fetch('/PokemonStats/pokemon.json').then(res => res.json()),
         fetch('/PokemonStats/cp_multiplier_table.json').then(res => res.json())
     ])
     .then(([pokemonList, cpTable]) => {
-        // Build Pokémon lookup table
+        // Load Pokémon stats
         pokemonList.forEach(entry => {
             pokemonData[entry["Pokémon"]] = {
                 hp: Number(entry["HP"]),
@@ -20,7 +23,7 @@ window.onload = () => {
         });
         pokemonNames = Object.keys(pokemonData);
 
-        // Store CP multiplier table
+        // Load CpM table
         cpMultiplierTable = cpTable;
     })
     .catch(err => {
@@ -49,7 +52,6 @@ function searchPokemon() {
 
     for (let level of levels) {
         const cpm = cpMultiplierTable[level.toString()] || 0;
-
         const atk = (baseStats.attack + IV_ATTACK) * cpm;
         const def = (baseStats.defense + IV_DEFENSE) * cpm;
         const hp = Math.floor((baseStats.hp + IV_STAMINA) * cpm);
@@ -60,6 +62,7 @@ function searchPokemon() {
     }
 
     drawChart(levels, attackStats, defenseStats, hpStats);
+    drawDynamaxChart(); // trigger Dynamax chart update
     document.getElementById("suggestions").innerHTML = '';
 }
 
@@ -107,6 +110,129 @@ function drawChart(labels, attack, defense, hp) {
         }
     });
 }
+
+function drawDynamaxChart() {
+    const nameInput = document.getElementById("searchBar").value.trim();
+    const baseStats = pokemonData[nameInput];
+    if (!baseStats) return;
+
+    const IV_ATTACK = 15;
+    const IV_STAMINA = 15;
+    const levels = Array.from({ length: 36 }, (_, i) => i + 15);
+    const ctx = document.getElementById('dynamaxChart').getContext('2d');
+
+    if (dynamaxChart) dynamaxChart.destroy();
+
+    if (dynamaxMode === 'attack') {
+        const defenseBaseline = parseInt(document.getElementById("defenseBaseline").value);
+        const movePowers = [250, 300, 350];
+
+        const datasets = movePowers.map((power, idx) => {
+            const data = levels.map(level => {
+                const cpm = cpMultiplierTable[level.toString()] || 0;
+                const atk = (baseStats.attack + IV_ATTACK) * cpm;
+                const damage = Math.floor(0.5 * power * (atk / defenseBaseline)) + 1;
+                return damage;
+            });
+
+            return {
+                label: `Move Level ${idx + 1} (${power} Power)`,
+                data: data,
+                borderColor: idx === 0 ? 'purple' : idx === 1 ? 'orange' : 'gold',
+                fill: false,
+            };
+        });
+
+        dynamaxChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: levels,
+                datasets: datasets
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        title: { display: true, text: 'Level' }
+                    },
+                    y: {
+                        title: { display: true, text: 'Approx. Damage' }
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Dynamax Move Damage by Level'
+                    }
+                }
+            }
+        });
+    } else {
+        const percentReturns = [0.08, 0.12, 0.16];
+
+        const datasets = percentReturns.map((pct, idx) => {
+            const data = levels.map(level => {
+                const cpm = cpMultiplierTable[level.toString()] || 0;
+                const hp = Math.floor((baseStats.hp + IV_STAMINA) * cpm);
+                return Math.floor(hp * pct);
+            });
+
+            return {
+                label: `Move Level ${idx + 1} (${Math.round(pct * 100)}% HP)`,
+                data: data,
+                borderColor: idx === 0 ? 'purple' : idx === 1 ? 'orange' : 'gold',
+                fill: false,
+            };
+        });
+
+        dynamaxChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: levels,
+                datasets: datasets
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        title: { display: true, text: 'Level' }
+                    },
+                    y: {
+                        title: { display: true, text: 'Health Returned' }
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Max Spirit HP Return by Level'
+                    }
+                }
+            }
+        });
+    }
+}
+
+
+function setDynamaxMode(mode) {
+    dynamaxMode = mode;
+    drawDynamaxChart();
+
+    document.getElementById("attackBtn").classList.remove("activeMode");
+    document.getElementById("spiritBtn").classList.remove("activeMode");
+
+    if (mode === 'attack') {
+        document.getElementById("attackBtn").classList.add("activeMode");
+        document.querySelector(".dynamaxNote").innerText = "This chart shows how Dynamax move damage scales with level and move strength, using the selected opponent defense.";
+        document.getElementById("defenseSection").style.display = "block";
+    } else {
+        document.getElementById("spiritBtn").classList.add("activeMode");
+        document.querySelector(".dynamaxNote").innerText = "This chart shows how much HP is returned from Max Spirit, based on your Pokémon’s HP at each level.";
+        document.getElementById("defenseSection").style.display = "none";
+    }
+}
+
 
 function showSuggestions() {
     const input = document.getElementById("searchBar").value.toLowerCase();

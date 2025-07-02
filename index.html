@@ -5,6 +5,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+    <header>Welcome to the Webpage!</header>
     <div class="titleBox">
         <p class="titleText">Pokémon Stat Calculator</p>
     </div>
@@ -18,9 +19,34 @@
     </div>
 
     <div class="graphBox">
+
         <div class="graphData">
             <canvas id="statChart"></canvas>
         </div>
+
+        <div class="dynamaxSection">
+            <div class="toggleButtons">
+                <button onclick="setDynamaxMode('attack')" id="attackBtn" class="activeMode">Max Attack</button>
+                <button onclick="setDynamaxMode('spirit')" id="spiritBtn">Max Spirit</button>
+            </div>
+
+            <div class="defenseSelector" id="defenseSection">
+                <label for="defenseBaseline">Opponent Defense:</label>
+                <select id="defenseBaseline" onchange="drawDynamaxChart()">
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                    <option value="150" selected>150</option>
+                    <option value="200">200</option>
+                </select>
+            </div>
+
+            <p class="dynamaxNote">[Placeholder text for Dynamax mode — will update based on selected mode]</p>
+
+            <div class="graphData">
+                <canvas id="dynamaxChart"></canvas>
+            </div>
+        </div>
+        
     </div>
 
     <script src="/JS/baseStats.js"></script>
