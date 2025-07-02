@@ -1,0 +1,28 @@
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+.titleText{
+    font-size:50;
+    color:#3e60b4;
+    font-weight:bold;
+    margin:auto;
+}
+.titleBox{
+    margin:auto;
+    padding:10px;
+    justify-content:center;
+    text-align:center;
+}
+.graphBox{
+    background-color: #f0c209;
+    height:fit-content;
+    width: fit-content;
+    margin: 10px 10px 10px 10px;
+}
+.graphData{
+    height:500px;
+    width:500px;
+    background-color:white;
+}
