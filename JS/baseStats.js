@@ -11,8 +11,8 @@ let gmaxMode = 'dmax'; // 'dmax' or 'gmax'
 // Load data on page load
 window.onload = () => {
     Promise.all([
-        fetch('/PokemonStats/pokemon.json').then(res => res.json()),
-        fetch('/PokemonStats/cp_multiplier_table.json').then(res => res.json())
+        fetch('./PokemonStats/pokemon.json').then(res => res.json()),
+        fetch('./PokemonStats/cp_multiplier_table.json').then(res => res.json())
     ])
     .then(([pokemonList, cpTable]) => {
         // Load Pokémon stats
