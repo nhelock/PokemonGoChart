@@ -1,28 +1,69 @@
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
-.titleText{
-    font-size:50;
-    color:#3e60b4;
-    font-weight:bold;
-    margin:auto;
+
+.titleText {
+    font-size: 50px;
+    color: #3e60b4;
+    font-weight: bold;
+    margin: auto;
 }
-.titleBox{
-    margin:auto;
-    padding:10px;
-    justify-content:center;
-    text-align:center;
+
+.titleBox {
+    margin: auto;
+    padding: 10px;
+    justify-content: center;
+    text-align: center;
 }
-.graphBox{
+
+.searchContainer {
+    text-align: center;
+    margin: 20px;
+    position: relative;
+}
+
+#searchBar {
+    width: 300px;  /* wider input */
+    padding: 8px;
+    font-size: 18px;
+}
+
+.suggestionsBox {
+    position: absolute;
+    background-color: white;
+    border: 0cap solid #ccc;
+    width: 300px;  /* match input width */
+    margin: 0 auto;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    text-align: left;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.suggestionItem {
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.suggestionItem:hover {
+    background-color: #eee;
+}
+
+.graphBox {
     background-color: #f0c209;
-    height:fit-content;
+    margin: 10px auto;
     width: fit-content;
-    margin: 10px 10px 10px 10px;
+    max-width: 1000px;
+    padding: 15px;
 }
-.graphData{
-    height:500px;
-    width:500px;
-    background-color:white;
+
+.graphData {
+    height: 700px;  /* increased height */
+    width: 900px;   /* increased width */
+    background-color: white;
+    padding: 10px;
 }
