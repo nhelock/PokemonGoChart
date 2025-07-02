@@ -18,7 +18,7 @@ header{
 body {
     background: 
         linear-gradient(to bottom, rgba(255,255,255,0) 60%, #4caf50 100%),
-        url("/ImageAssets/background.png") no-repeat center top;
+        url("../ImageAssets/background.png") no-repeat center top;
     background-size: cover;
     background-attachment: fixed;
     background-repeat: no-repeat;
