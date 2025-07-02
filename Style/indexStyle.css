@@ -21,11 +21,18 @@
 .searchContainer {
     text-align: center;
     margin: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.inputWrapper {
     position: relative;
+    width: 300px; /* same as input and suggestionsBox */
 }
 
 #searchBar {
-    width: 300px;  /* wider input */
+    width: 100%;
     padding: 8px;
     font-size: 18px;
 }
@@ -33,15 +40,14 @@
 .suggestionsBox {
     position: absolute;
     background-color: white;
-    border: 0cap solid #ccc;
-    width: 300px;  /* match input width */
-    margin: 0 auto;
-    left: 50%;
-    transform: translateX(-50%);
+    border: 1px solid #ccc;
+    width: 100%;
+    top: 100%; /* directly below the input */
     z-index: 10;
     text-align: left;
     max-height: 150px;
     overflow-y: auto;
+    box-sizing: border-box;
 }
 
 .suggestionItem {

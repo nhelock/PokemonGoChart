@@ -10,8 +10,10 @@
     </div>
 
     <div class="searchContainer">
-        <input type="text" id="searchBar" placeholder="Enter Pokémon name..." oninput="showSuggestions()" autocomplete="off" />
-        <div id="suggestions" class="suggestionsBox"></div>
+        <div class="inputWrapper">
+            <input type="text" id="searchBar" placeholder="Enter Pokémon name..." oninput="showSuggestions()" autocomplete="off" />
+            <div id="suggestions" class="suggestionsBox"></div>
+        </div>
         <button onclick="searchPokemon()">Search</button>
     </div>
 
