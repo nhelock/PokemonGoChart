@@ -419,6 +419,18 @@
         "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": true, "Ice": false,
         "Normal": false, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": true
     },
+    {"Name": "Zacian Crowned Sword", "D-max": true, "G-max": false, "Type1": "Steel", "Type2": "Fairy",
+
+        "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
+        "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
+        "Normal": false, "Poison": false, "Psychic": false, "Rock": false, "Steel": true, "Water": false
+    },
+    {"Name": "Zamazenta Crowned Shield", "D-max": true, "G-max": false, "Type1": "Steel", "Type2": "Fighting",
+
+        "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
+        "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
+        "Normal": false, "Poison": false, "Psychic": false, "Rock": false, "Steel": true, "Water": false
+    },
 
 
 
