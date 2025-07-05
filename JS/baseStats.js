@@ -1,47 +1,111 @@
-// baseStats.js - corrected and improved
 let pokemonData = {};
 let cpMultiplierTable = {};
-let pokemonNames = [];
+let pokemonNames = [];         // All Pokémon names from pokemon.json
+let dynamaxEntries = [];
+let dynamaxNames = [];         // Names from dynamax_pokemon.json
+
 let chart = null;
 let dynamaxChart = null;
 let dynamaxMode = 'attack'; // default
-let gmaxMode = 'dmax'; // 'dmax' or 'gmax'
+let gmaxMode = 'dmax';      // 'dmax' or 'gmax'
+
+const isDynamaxPage = window.location.pathname.includes("dynamax.html");
 
 // Load data on page load
 window.onload = () => {
-    Promise.all([
+    const promises = [
         fetch('./PokemonStats/pokemon.json').then(res => res.json()),
         fetch('./PokemonStats/cp_multiplier_table.json').then(res => res.json())
-    ])
-    .then(([pokemonList, cpTable]) => {
-        pokemonList.forEach(entry => {
-            pokemonData[entry["Pokémon"]] = {
-                hp: Number(entry["HP"]),
-                attack: Number(entry["Attack"]),
-                defense: Number(entry["Defense"])
-            };
-        });
-        pokemonNames = Object.keys(pokemonData);
-        cpMultiplierTable = cpTable;
+    ];
 
-        // Attach Enter key event listener AFTER DOM is ready
-        const input = document.getElementById("searchBar");
-        input.addEventListener("keydown", function (event) {
-            if (event.key === "Enter") {
-                const suggestions = document.querySelectorAll(".suggestionItem");
-                if (suggestions.length > 0) {
-                    input.value = suggestions[0].innerText;
-                }
-                document.getElementById("suggestions").innerHTML = '';
+    if (isDynamaxPage) {
+        promises.push(fetch('./PokemonStats/dynamax_pokemon.json').then(res => res.json()));
+    }
+
+    Promise.all(promises)
+        .then(([pokemonList, cpTable, dynamaxList]) => {
+            // Load base Pokémon stats
+            pokemonList.forEach(entry => {
+                pokemonData[entry["Pokémon"]] = {
+                    hp: Number(entry["HP"]),
+                    attack: Number(entry["Attack"]),
+                    defense: Number(entry["Defense"])
+                };
+            });
+            cpMultiplierTable = cpTable;
+
+            // If we're on the Dynamax page, load and prepare additional data
+            if (isDynamaxPage && dynamaxList) {
+                dynamaxEntries = dynamaxList;
+                dynamaxNames = dynamaxList.map(e => e.Name);
+                pokemonNames = dynamaxNames;
+
+                buildDynamaxInstances();
+                buildTypeRankings();
+
+                // Call populate AFTER rankings are built
+                populateRankingSections();
+            } else {
+                pokemonNames = Object.keys(pokemonData);
+            }
+
+            // Set up event listener for Enter key in search bar
+            const input = document.getElementById("searchBar");
+            if (input) {
+                input.addEventListener("keydown", function (event) {
+                    if (event.key === "Enter") {
+                        const suggestions = document.querySelectorAll(".suggestionItem");
+                        if (suggestions.length > 0) {
+                            input.value = suggestions[0].innerText;
+                        }
+                        document.getElementById("suggestions").innerHTML = '';
+
+                        if (isDynamaxPage && typeof displayPokemonRanking === "function") {
+                            displayPokemonRanking();
+                        } else {
+                            searchPokemon();
+                        }
+                    }
+                });
+            }
+        })
+        .catch(err => {
+            console.error("Failed to load JSON data:", err);
+            alert("Error loading data files.");
+        });
+};
+
+
+function showSuggestions() {
+    const input = document.getElementById("searchBar").value.toLowerCase();
+    const suggestionsBox = document.getElementById("suggestions");
+    suggestionsBox.innerHTML = '';
+
+    if (input.length === 0) return;
+
+    const sourceNames = isDynamaxPage ? dynamaxNames : pokemonNames;
+
+    const matches = sourceNames.filter(name =>
+        name.toLowerCase().startsWith(input)
+    ).slice(0, 5);
+
+    matches.forEach(name => {
+        const div = document.createElement("div");
+        div.classList.add("suggestionItem");
+        div.innerText = name;
+        div.onclick = () => {
+            document.getElementById("searchBar").value = name;
+            suggestionsBox.innerHTML = '';
+
+            if (isDynamaxPage) {
+                displayPokemonRanking();
+            } else {
                 searchPokemon();
             }
-        });
-    })
-    .catch(err => {
-        console.error("Failed to load JSON data:", err);
-        alert("Error loading data files.");
+        };
+        suggestionsBox.appendChild(div);
     });
-};
+}
 
 function searchPokemon() {
     const nameInput = document.getElementById("searchBar").value.trim();
@@ -110,11 +174,14 @@ function drawDynamaxChart() {
     const IV_ATTACK = 15;
     const IV_STAMINA = 15;
     const levels = Array.from({ length: 36 }, (_, i) => i + 15);
-    const ctx = document.getElementById('dynamaxChart').getContext('2d');
+    const ctx = document.getElementById('dynamaxChart')?.getContext('2d');
+    if (!ctx) return;
     if (dynamaxChart) dynamaxChart.destroy();
 
     if (dynamaxMode === 'attack') {
-        const defenseBaseline = parseInt(document.getElementById("defenseBaseline").value);
+        const defenseInput = document.getElementById("defenseBaseline");
+        if (!defenseInput) return;
+        const defenseBaseline = parseInt(defenseInput.value);
         const movePowers = gmaxMode === 'gmax' ? [350, 400, 450] : [250, 300, 350];
 
         const datasets = movePowers.map((power, idx) => {
@@ -217,193 +284,18 @@ function setGmaxMode(mode) {
     document.getElementById("gmaxBtn").classList.toggle("activeMode", mode === 'gmax');
 }
 
-function showSuggestions() {
-    const input = document.getElementById("searchBar").value.toLowerCase();
-    const suggestionsBox = document.getElementById("suggestions");
-    suggestionsBox.innerHTML = '';
-    if (!input || pokemonNames.length === 0) return;
-
-    const matches = pokemonNames.filter(name =>
-        name.toLowerCase().startsWith(input)
-    ).slice(0, 5);
-
-    matches.forEach(name => {
-        const div = document.createElement("div");
-        div.classList.add("suggestionItem");
-        div.innerText = name;
-        div.onclick = () => {
-            document.getElementById("searchBar").value = name;
-            suggestionsBox.innerHTML = '';
-        };
-        suggestionsBox.appendChild(div);
-    });
-}
-function showDynamaxSuggestions() {
-    const input = document.getElementById("searchBar").value.toLowerCase();
-    const suggestionsBox = document.getElementById("suggestions");
-    suggestionsBox.innerHTML = '';
-
-    if (input.length === 0) return;
-
-    const matches = dynamaxNames.filter(name =>
-        name.toLowerCase().startsWith(input)
-    ).slice(0, 5);
-
-    matches.forEach(name => {
-        const div = document.createElement("div");
-        div.classList.add("suggestionItem");
-        div.innerText = name;
-        div.onclick = () => {
-            document.getElementById("searchBar").value = name;
-            suggestionsBox.innerHTML = '';
-            displayPokemonRanking(); // Instant search after click
-        };
-        suggestionsBox.appendChild(div);
-    });
-}
-
-
 document.addEventListener("click", function (e) {
     if (!e.target.closest("#searchBar") && !e.target.closest(".suggestionsBox")) {
         document.getElementById("suggestions").innerHTML = '';
     }
 });
 
+// Dynamax Page Section
 
-
-//Dynamax Page Section
-
-let dynamaxEntries = [];
-let dynamaxNames = [];
 let allDynamaxInstances = [];
 let typeRankings = {};
 let maxGuardRanking = [];
 let maxSpiritRanking = [];
-
-function loadDynamaxData() {
-    fetch('./PokemonStats/dynamax_pokemon.json')
-        .then(res => res.json())
-        .then(data => {
-            dynamaxData = data;
-            computeAllRankings();
-        })
-        .catch(err => {
-            console.error("Failed to load dynamax data:", err);
-        });
-}
-
-function computeAllRankings() {
-    const attackerList = [];
-    const cpm = 0.7903; // High level CPM approximation
-    const defenseBaseline = 150;
-
-    for (let entry of dynamaxData) {
-        const baseAtk = pokemonData[entry.Name]?.attack || 0;
-        const atkStat = (baseAtk + 15) * cpm;
-
-        // D-Max entry
-        if (entry["D-max"]) {
-            let attackerTypes = [];
-            let bestDamage = 0;
-            for (let type in entry) {
-                if (!["Name", "D-max", "G-max", "Type1", "Type2"].includes(type) && entry[type]) {
-                    const isSTAB = type === entry.Type1 || type === entry.Type2;
-                    const damage = Math.floor(0.5 * 350 * (atkStat / defenseBaseline) * (isSTAB ? 1.2 : 1)) + 1;
-                    attackerTypes.push({ type, damage });
-                    if (damage > bestDamage) bestDamage = damage;
-                }
-            }
-            attackerList.push({
-                name: entry.Name,
-                form: "D-Max",
-                type1: entry.Type1,
-                type2: entry.Type2,
-                isDmax: true,
-                isGmax: false,
-                bestDamage,
-                attackerTypes
-            });
-        }
-
-        // G-Max entry
-        if (entry["G-max"]) {
-            const type = entry.Type1;
-            const damage = Math.floor(0.5 * 450 * (atkStat / defenseBaseline) * 1.2) + 1;
-            attackerList.push({
-                name: entry.Name,
-                form: "G-Max",
-                type1: entry.Type1,
-                type2: entry.Type2,
-                isDmax: false,
-                isGmax: true,
-                bestDamage: damage,
-                attackerTypes: [{ type, damage }]
-            });
-        }
-    }
-
-    // Sort by overall damage
-    overallRanking = attackerList.sort((a, b) => b.bestDamage - a.bestDamage);
-
-    // Per-type rankings
-    rankingsByType = {};
-    for (let type of [
-        "Bug", "Dark", "Dragon", "Electric", "Fairy", "Fighting", "Fire", "Flying",
-        "Ghost", "Grass", "Ground", "Ice", "Normal", "Poison", "Psychic", "Rock", "Steel", "Water"
-    ]) {
-        rankingsByType[type] = [...attackerList]
-            .filter(p => p.attackerTypes.some(t => t.type === type))
-            .sort((a, b) =>
-                (b.attackerTypes.find(t => t.type === type)?.damage || 0) -
-                (a.attackerTypes.find(t => t.type === type)?.damage || 0)
-            );
-    }
-}
-
-function displayPokemonRanking() {
-    const input = document.getElementById("searchBar").value.trim();
-    const resultBox = document.getElementById("resultBox");
-    const typeBox = document.getElementById("typeRankingsContainer");
-    resultBox.innerHTML = '';
-    typeBox.innerHTML = '';
-
-    const matches = allDynamaxInstances.filter(p => p.name.toLowerCase() === input.toLowerCase());
-
-    if (matches.length === 0) {
-        resultBox.innerHTML = `<p>No Dynamax data found for "${input}".</p>`;
-        return;
-    }
-
-    matches.forEach(pkmn => {
-        const typeDisplay = [pkmn.type1, pkmn.type2].filter(Boolean).join(" / ");
-        const rankings = [];
-
-        for (const type of pkmn.types) {
-            const rank = typeRankings[type].findIndex(p => p.label === pkmn.label) + 1;
-            rankings.push(`<li>${type} Attacker Rank: ${rank}</li>`);
-        }
-
-        const overallRank = typeRankings["Overall"].findIndex(p => p.label === pkmn.label) + 1;
-        const guardRank = maxGuardRanking.findIndex(p => p.label === pkmn.label) + 1;
-        const spiritRank = maxSpiritRanking.findIndex(p => p.label === pkmn.label) + 1;
-
-        const section = `
-            <div class="pkmnResultBox">
-                <h3>${pkmn.label}</h3>
-                <p>Type: ${typeDisplay}</p>
-                <ul>
-                    ${rankings.join("")}
-                    <li>Overall Attacker Rank: ${overallRank}</li>
-                    <li>Max Guard Rank (Defense): ${guardRank}</li>
-                    <li>Max Spirit Rank (HP): ${spiritRank}</li>
-                </ul>
-            </div>
-        `;
-
-        resultBox.innerHTML += section;
-    });
-}
-
 
 function buildDynamaxInstances() {
     const IV_ATTACK = 15;
@@ -444,13 +336,12 @@ function buildDynamaxInstances() {
                 form: "G-Max",
                 label: `${entry.Name} (G-Max)`,
                 movePower: 450,
-                types: [entry.Type1], // G-Max only uses Type1
+                types: [entry.Type1],
                 stabTypes: [entry.Type1]
             });
         }
     }
 }
-
 
 function buildTypeRankings() {
     typeRankings = {};
@@ -471,7 +362,6 @@ function buildTypeRankings() {
             if (damage > bestDamage) bestDamage = damage;
         }
 
-        // Add to overall damage ranking
         if (!typeRankings["Overall"]) typeRankings["Overall"] = [];
         typeRankings["Overall"].push({ ...pkmn, damage: bestDamage });
 
@@ -487,33 +377,126 @@ function buildTypeRankings() {
     maxSpiritRanking.sort((a, b) => b.hp - a.hp);
 }
 
+function displayPokemonRanking() {
+    const input = document.getElementById("searchBar");
+    const resultBox = document.getElementById("resultBox");
+    if (!input || !resultBox) return;
 
-// Trigger data load
-window.onload = () => {
-    Promise.all([
-        fetch('./PokemonStats/pokemon.json').then(res => res.json()),
-        fetch('./PokemonStats/cp_multiplier_table.json').then(res => res.json()),
-        fetch('./PokemonStats/dynamax_pokemon.json').then(res => res.json())
-    ])
-    .then(([pokemonList, cpTable, dynamaxList]) => {
-        pokemonList.forEach(entry => {
-            pokemonData[entry["Pokémon"]] = {
-                hp: Number(entry["HP"]),
-                attack: Number(entry["Attack"]),
-                defense: Number(entry["Defense"])
-            };
+    const name = input.value.trim();
+    resultBox.innerHTML = '';
+
+    const matches = allDynamaxInstances.filter(p => p.name.toLowerCase() === name.toLowerCase());
+    if (matches.length === 0) {
+        resultBox.innerHTML = `<p>No Dynamax data found for "${name}".</p>`;
+        return;
+    }
+
+    matches.forEach(pkmn => {
+        const typeDisplay = [pkmn.type1, pkmn.type2].filter(Boolean).join(" / ");
+        const rankings = [];
+
+        for (const type of pkmn.types) {
+            const rank = typeRankings[type].findIndex(p => p.label === pkmn.label) + 1;
+            rankings.push(`<li>${type} Attacker Rank: ${rank}</li>`);
+        }
+
+        const overallRank = typeRankings["Overall"].findIndex(p => p.label === pkmn.label) + 1;
+        const guardRank = maxGuardRanking.findIndex(p => p.label === pkmn.label) + 1;
+        const spiritRank = maxSpiritRanking.findIndex(p => p.label === pkmn.label) + 1;
+
+        const section = `
+            <div class="pkmnResultBox">
+                <h3>${pkmn.label}</h3>
+                <p>Type: ${typeDisplay}</p>
+                <ul>
+                    ${rankings.join("")}
+                    <li>Overall Attacker Rank: ${overallRank}</li>
+                    <li>Max Guard Rank (Defense): ${guardRank}</li>
+                    <li>Max Spirit Rank (HP): ${spiritRank}</li>
+                </ul>
+            </div>
+        `;
+
+        resultBox.innerHTML += section;
+    });
+}
+
+function populateRankingSections() {
+    const typeContent = document.getElementById("typeAttackersContent");
+    const maxGuardContent = document.getElementById("maxGuardContent");
+    const maxSpiritContent = document.getElementById("maxSpiritContent");
+    const bulkContent = document.getElementById("bulkContent");
+
+    if (!typeContent || !maxGuardContent || !maxSpiritContent || !bulkContent) return;
+
+    // Type-Attacker Rankings
+    for (const type in typeRankings) {
+        if (type === "Overall") continue;
+
+        const btn = document.createElement("button");
+        btn.className = "collapsible";
+        btn.innerText = `${type} Attackers`;
+
+        const innerContent = document.createElement("div");
+        innerContent.className = "content";
+
+        const list = document.createElement("ul");
+        list.className = "ranking-list";
+
+        typeRankings[type].forEach((pkmn, index) => {
+            const item = document.createElement("li");
+            item.innerText = `${index + 1}. ${pkmn.label} — ${pkmn.damage} dmg`;
+            list.appendChild(item);
         });
 
-        cpMultiplierTable = cpTable;
-        dynamaxEntries = dynamaxList;
-        dynamaxNames = dynamaxList.map(e => e.Name);
-        pokemonNames = dynamaxNames; // Filter suggestions only to these
+        innerContent.appendChild(list);
+        typeContent.appendChild(btn);
+        typeContent.appendChild(innerContent);
+    }
 
-        buildDynamaxInstances();
-        buildTypeRankings();
-    })
-    .catch(err => {
-        console.error("Failed to load data:", err);
-        alert("Error loading data files.");
+    // Max Guard Rankings
+    const guardList = document.createElement("ul");
+    guardList.className = "ranking-list";
+    maxGuardRanking.forEach((pkmn, i) => {
+        const item = document.createElement("li");
+        item.innerText = `${i + 1}. ${pkmn.label} — ${Math.round(pkmn.defense)}`;
+        guardList.appendChild(item);
     });
-};
+    maxGuardContent.appendChild(guardList);
+
+    // Max Spirit Rankings
+    const spiritList = document.createElement("ul");
+    spiritList.className = "ranking-list";
+    maxSpiritRanking.forEach((pkmn, i) => {
+        const item = document.createElement("li");
+        item.innerText = `${i + 1}. ${pkmn.label} — ${pkmn.hp}`;
+        spiritList.appendChild(item);
+    });
+    maxSpiritContent.appendChild(spiritList);
+
+    // Bulk Rankings (HP * DEF)
+    const bulkSorted = [...allDynamaxInstances].sort((a, b) => (b.hp * b.defense) - (a.hp * a.defense));
+    const bulkList = document.createElement("ul");
+    bulkList.className = "ranking-list";
+    bulkSorted.forEach((pkmn, i) => {
+        const item = document.createElement("li");
+        const bulk = Math.round(pkmn.hp * pkmn.defense);
+        item.innerText = `${i + 1}. ${pkmn.label} — Bulk: ${bulk}`;
+        bulkList.appendChild(item);
+    });
+    bulkContent.appendChild(bulkList);
+
+    // Enable interactivity
+    document.querySelectorAll(".collapsible").forEach(btn => {
+        btn.addEventListener("click", function () {
+            this.classList.toggle("active");
+            const content = this.nextElementSibling;
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        });
+    });
+} // end populateRankingSections
+

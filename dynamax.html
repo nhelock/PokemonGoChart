@@ -14,47 +14,91 @@
     <link rel="icon" href="ImageAssets/Poké_Ball_icon.png" type="image/png">
     <link rel="stylesheet" href="Style/indexStyle.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .collapsible {
+            background-color: #3e60b4;
+            color: white;
+            cursor: pointer;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .collapsible:hover {
+            background-color: #2e4c91;
+        }
+
+        .content {
+            padding: 0 18px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background-color: #f9f9f9;
+        }
+
+        .ranking-list {
+            list-style: none;
+            padding: 10px;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <p>Pokémon GO Tool Created by Oathborn / WaywardOath</p>
-        <a href="index.html" class="link-button">Back to Stat Calculator</a>
-    </header>
+<header>
+    <p>Pokémon GO Tool Created by Oathborn / WaywardOath</p>
+    <a href="index.html" class="link-button">Back to Stat Calculator</a>
+</header>
 
-    <div class="titleBox">
-        <p class="titleText">Dynamax Pokémon Comparison</p>
+<div class="titleBox">
+    <p class="titleText">Dynamax Pokémon Comparison</p>
+</div>
+
+<!-- Search Section -->
+<div class="searchContainer">
+    <div class="inputWrapper">
+        <input type="text" id="searchBar" placeholder="Enter Pokémon name..." oninput="showSuggestions()" autocomplete="off" />
+        <div id="suggestions" class="suggestionsBox"></div>
     </div>
+    <button onclick="displayPokemonRanking()">Search</button>
+</div>
 
-    <!-- Search Section -->
-    <div class="searchContainer">
-        <div class="inputWrapper">
-            <input type="text" id="searchBar" placeholder="Enter Pokémon name..." oninput="showSuggestions()" autocomplete="off" />
-            <div id="suggestions" class="suggestionsBox"></div>
-        </div>
-        <button onclick="displayPokemonRanking()">Search</button>
-    </div>
+<!-- Result Section (Space reserved for search result) -->
+<div class="resultBox" id="resultBox" style="text-align: center; min-height: 160px; margin: 20px;"></div>
 
-    <!-- Output Section -->
-    <div class="resultBox" id="resultBox" style="text-align: center; margin: 20px;"></div>
+<!-- Collapsible Sections -->
+<div class="typeRankingsContainer" style="margin: 20px;">
+    <button type="button" class="collapsible">Type-Attacker Rankings</button>
+    <div class="content" id="typeAttackersContent"></div>
 
-    <!-- Type Rankings (to be populated dynamically) -->
-    <div class="typeRankingsContainer" id="typeRankingsContainer" style="margin: 20px;"></div>
+    <button type="button" class="collapsible">Max Guard Rankings</button>
+    <div class="content" id="maxGuardContent"></div>
 
-    <!-- Script includes -->
-    <script src="JS/baseStats.js"></script>
+    <button type="button" class="collapsible">Max Spirit Rankings</button>
+    <div class="content" id="maxSpiritContent"></div>
 
-    <script>
-        // Handle Enter key for search
-        document.getElementById("searchBar").addEventListener("keydown", function (event) {
-            if (event.key === "Enter") {
-                const suggestions = document.querySelectorAll(".suggestionItem");
-                if (suggestions.length > 0) {
-                    document.getElementById("searchBar").value = suggestions[0].innerText;
-                }
-                document.getElementById("suggestions").innerHTML = '';
-                displayPokemonRanking();
+    <button type="button" class="collapsible">Bulk Rankings</button>
+    <div class="content" id="bulkContent"></div>
+</div>
+
+<script src="JS/baseStats.js"></script>
+<script>
+    const collapsibles = document.querySelectorAll(".collapsible");
+    collapsibles.forEach(button => {
+        button.addEventListener("click", function () {
+            this.classList.toggle("active");
+            const content = this.nextElementSibling;
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
             }
         });
-    </script>
+    });
+</script>
 </body>
 </html>
+
