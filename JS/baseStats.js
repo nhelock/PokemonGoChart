@@ -1,3 +1,4 @@
+// baseStats.js - corrected and improved
 let pokemonData = {};
 let cpMultiplierTable = {};
 let pokemonNames = [];
@@ -6,8 +7,6 @@ let dynamaxChart = null;
 let dynamaxMode = 'attack'; // default
 let gmaxMode = 'dmax'; // 'dmax' or 'gmax'
 
-
-
 // Load data on page load
 window.onload = () => {
     Promise.all([
@@ -15,7 +14,6 @@ window.onload = () => {
         fetch('./PokemonStats/cp_multiplier_table.json').then(res => res.json())
     ])
     .then(([pokemonList, cpTable]) => {
-        // Load Pokémon stats
         pokemonList.forEach(entry => {
             pokemonData[entry["Pokémon"]] = {
                 hp: Number(entry["HP"]),
@@ -24,9 +22,20 @@ window.onload = () => {
             };
         });
         pokemonNames = Object.keys(pokemonData);
-
-        // Load CpM table
         cpMultiplierTable = cpTable;
+
+        // Attach Enter key event listener AFTER DOM is ready
+        const input = document.getElementById("searchBar");
+        input.addEventListener("keydown", function (event) {
+            if (event.key === "Enter") {
+                const suggestions = document.querySelectorAll(".suggestionItem");
+                if (suggestions.length > 0) {
+                    input.value = suggestions[0].innerText;
+                }
+                document.getElementById("suggestions").innerHTML = '';
+                searchPokemon();
+            }
+        });
     })
     .catch(err => {
         console.error("Failed to load JSON data:", err);
@@ -64,13 +73,12 @@ function searchPokemon() {
     }
 
     drawChart(levels, attackStats, defenseStats, hpStats);
-    drawDynamaxChart(); // trigger Dynamax chart update
+    drawDynamaxChart();
     document.getElementById("suggestions").innerHTML = '';
 }
 
 function drawChart(labels, attack, defense, hp) {
     const ctx = document.getElementById('statChart').getContext('2d');
-
     if (chart) chart.destroy();
 
     chart = new Chart(ctx, {
@@ -78,36 +86,17 @@ function drawChart(labels, attack, defense, hp) {
         data: {
             labels: labels,
             datasets: [
-                {
-                    label: 'Attack',
-                    data: attack,
-                    borderColor: 'red',
-                    fill: false
-                },
-                {
-                    label: 'Defense',
-                    data: defense,
-                    borderColor: 'blue',
-                    fill: false
-                },
-                {
-                    label: 'HP',
-                    data: hp,
-                    borderColor: 'green',
-                    fill: false
-                }
+                { label: 'Attack', data: attack, borderColor: 'red', fill: false },
+                { label: 'Defense', data: defense, borderColor: 'blue', fill: false },
+                { label: 'HP', data: hp, borderColor: 'green', fill: false }
             ]
         },
         options: {
             responsive: true,
             maintainAspectRatio: false,
             scales: {
-                x: {
-                    title: { display: true, text: 'Level' }
-                },
-                y: {
-                    title: { display: true, text: 'Stat Value' }
-                }
+                x: { title: { display: true, text: 'Level' } },
+                y: { title: { display: true, text: 'Stat Value' } }
             }
         }
     });
@@ -122,13 +111,11 @@ function drawDynamaxChart() {
     const IV_STAMINA = 15;
     const levels = Array.from({ length: 36 }, (_, i) => i + 15);
     const ctx = document.getElementById('dynamaxChart').getContext('2d');
-
     if (dynamaxChart) dynamaxChart.destroy();
 
     if (dynamaxMode === 'attack') {
         const defenseBaseline = parseInt(document.getElementById("defenseBaseline").value);
         const movePowers = gmaxMode === 'gmax' ? [350, 400, 450] : [250, 300, 350];
-
 
         const datasets = movePowers.map((power, idx) => {
             const data = levels.map(level => {
@@ -141,8 +128,8 @@ function drawDynamaxChart() {
             return {
                 label: `Move Level ${idx + 1} (${power} Power)`,
                 data: data,
-                borderColor: idx === 0 ? 'pink' : idx === 1 ? 'fuchsia' : 'purple',
-                fill: false,
+                borderColor: ['pink', 'fuchsia', 'purple'][idx],
+                fill: false
             };
         });
 
@@ -156,12 +143,8 @@ function drawDynamaxChart() {
                 responsive: true,
                 maintainAspectRatio: false,
                 scales: {
-                    x: {
-                        title: { display: true, text: 'Level' }
-                    },
-                    y: {
-                        title: { display: true, text: 'Approx. Damage' }
-                    }
+                    x: { title: { display: true, text: 'Level' } },
+                    y: { title: { display: true, text: 'Approx. Damage' } }
                 },
                 plugins: {
                     title: {
@@ -171,6 +154,7 @@ function drawDynamaxChart() {
                 }
             }
         });
+
     } else {
         const percentReturns = [0.08, 0.12, 0.16];
 
@@ -184,8 +168,8 @@ function drawDynamaxChart() {
             return {
                 label: `Move Level ${idx + 1} (${Math.round(pct * 100)}% HP)`,
                 data: data,
-                borderColor: idx === 0 ? 'purple' : idx === 1 ? 'orange' : 'gold',
-                fill: false,
+                borderColor: ['purple', 'orange', 'gold'][idx],
+                fill: false
             };
         });
 
@@ -199,12 +183,8 @@ function drawDynamaxChart() {
                 responsive: true,
                 maintainAspectRatio: false,
                 scales: {
-                    x: {
-                        title: { display: true, text: 'Level' }
-                    },
-                    y: {
-                        title: { display: true, text: 'Health Returned' }
-                    }
+                    x: { title: { display: true, text: 'Level' } },
+                    y: { title: { display: true, text: 'Health Returned' } }
                 },
                 plugins: {
                     title: {
@@ -217,50 +197,31 @@ function drawDynamaxChart() {
     }
 }
 
-
 function setDynamaxMode(mode) {
     dynamaxMode = mode;
     drawDynamaxChart();
-
-    document.getElementById("attackBtn").classList.remove("activeMode");
-    document.getElementById("spiritBtn").classList.remove("activeMode");
-
-    if (mode === 'attack') {
-        document.getElementById("attackBtn").classList.add("activeMode");
-        document.querySelector(".dynamaxNote").innerText = "This chart shows how Dynamax move damage scales with level and move strength, using the selected opponent defense.";
-        document.getElementById("defenseSection").style.display = "block";
-        document.getElementById("gmaxToggle").style.display = "block";
-    } else {
-        document.getElementById("spiritBtn").classList.add("activeMode");
-        document.querySelector(".dynamaxNote").innerText = "This chart shows how much HP is returned from Max Spirit, based on your Pokémon’s HP at each level.";
-        document.getElementById("defenseSection").style.display = "none";
-        document.getElementById("gmaxToggle").style.display = "none";
-    }
-
+    document.getElementById("attackBtn").classList.toggle("activeMode", mode === 'attack');
+    document.getElementById("spiritBtn").classList.toggle("activeMode", mode === 'spirit');
+    document.querySelector(".dynamaxNote").innerText =
+        mode === 'attack'
+            ? "This chart shows how Dynamax move damage scales with level and move strength, using the selected opponent defense."
+            : "This chart shows how much HP is returned from Max Spirit, based on your Pokémon’s HP at each level.";
+    document.getElementById("defenseSection").style.display = mode === 'attack' ? "block" : "none";
+    document.getElementById("gmaxToggle").style.display = mode === 'attack' ? "block" : "none";
 }
 
 function setGmaxMode(mode) {
     gmaxMode = mode;
     drawDynamaxChart();
-
-    document.getElementById("dmaxBtn").classList.remove("activeMode");
-    document.getElementById("gmaxBtn").classList.remove("activeMode");
-
-    if (mode === 'dmax') {
-        document.getElementById("dmaxBtn").classList.add("activeMode");
-    } else {
-        document.getElementById("gmaxBtn").classList.add("activeMode");
-    }
+    document.getElementById("dmaxBtn").classList.toggle("activeMode", mode === 'dmax');
+    document.getElementById("gmaxBtn").classList.toggle("activeMode", mode === 'gmax');
 }
-
-
 
 function showSuggestions() {
     const input = document.getElementById("searchBar").value.toLowerCase();
     const suggestionsBox = document.getElementById("suggestions");
     suggestionsBox.innerHTML = '';
-
-    if (input.length === 0) return;
+    if (!input || pokemonNames.length === 0) return;
 
     const matches = pokemonNames.filter(name =>
         name.toLowerCase().startsWith(input)
@@ -283,19 +244,3 @@ document.addEventListener("click", function (e) {
         document.getElementById("suggestions").innerHTML = '';
     }
 });
-
-document.getElementById("searchBar").addEventListener("keydown", function (event) {
-    if (event.key === "Enter") {
-        const input = document.getElementById("searchBar");
-        const suggestions = document.querySelectorAll(".suggestionItem");
-
-        // If suggestions are shown, use the first one
-        if (suggestions.length > 0) {
-            input.value = suggestions[0].innerText;
-        }
-
-        document.getElementById("suggestions").innerHTML = '';
-        searchPokemon();
-    }
-});
-

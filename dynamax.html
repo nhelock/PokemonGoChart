@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dynamax Pokémon Comparison</title>
+
+    <!-- Meta tags for sharing -->
+    <meta property="og:title" content="Pokémon GO Dynamax Tool">
+    <meta property="og:description" content="Compare Dynamax Pokémon damage potential across types.">
+    <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/5/53/Pok%C3%A9_Ball_icon.svg">
+    <meta property="og:url" content="https://nhelock.github.io/PokemonGoChart/">
+    <meta property="og:type" content="website">
+
+    <link rel="icon" href="ImageAssets/Poké_Ball_icon.png" type="image/png">
+    <link rel="stylesheet" href="Style/indexStyle.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <p>Pokémon GO Tool Created by Oathborn / WaywardOath</p>
+        <a href="index.html" class="link-button">Back to Stat Calculator</a>
+    </header>
+
+    <div class="titleBox">
+        <p class="titleText">Dynamax Pokémon Comparison</p>
+    </div>
+
+    <!-- Search Section -->
+    <div class="searchContainer">
+        <div class="inputWrapper">
+            <input type="text" id="searchBar" placeholder="Enter Pokémon name..." oninput="showSuggestions()" autocomplete="off" />
+            <div id="suggestions" class="suggestionsBox"></div>
+        </div>
+        <button onclick="displayPokemonRanking()">Search</button>
+    </div>
+
+    <!-- Output Section -->
+    <div class="resultBox" id="resultBox" style="text-align: center; margin: 20px;"></div>
+
+    <!-- Type Rankings (to be populated dynamically) -->
+    <div class="typeRankingsContainer" id="typeRankingsContainer" style="margin: 20px;"></div>
+
+    <!-- Scripts -->
+    <script src="JS/baseStats.js"></script>
+</body>
+</html>
