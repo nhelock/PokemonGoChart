@@ -423,13 +423,33 @@ function displayPokemonRanking() {
 
 function populateRankingSections() {
     const typeContent = document.getElementById("typeAttackersContent");
+    const overallContent = document.getElementById("overallAttackersContent");
     const maxGuardContent = document.getElementById("maxGuardContent");
     const maxSpiritContent = document.getElementById("maxSpiritContent");
     const bulkContent = document.getElementById("bulkContent");
 
-    if (!typeContent || !maxGuardContent || !maxSpiritContent || !bulkContent) return;
+    if (!typeContent || !overallContent || !maxGuardContent || !maxSpiritContent || !bulkContent) return;
 
-    // Type-Attacker Rankings
+    // Clear all contents first
+    typeContent.innerHTML = '';
+    overallContent.innerHTML = '';
+    maxGuardContent.innerHTML = '';
+    maxSpiritContent.innerHTML = '';
+    bulkContent.innerHTML = '';
+
+    // Create top-level collapsible for all type attackers
+    const typeGroupBtn = document.createElement("button");
+    typeGroupBtn.className = "collapsible";
+    typeGroupBtn.innerText = "Attacker Ranking by Type";
+
+    const typeGroupContent = document.createElement("div");
+    typeGroupContent.className = "content";
+
+    // Append the top-level button and empty container
+    typeContent.appendChild(typeGroupBtn);
+    typeContent.appendChild(typeGroupContent);
+
+    // Inside this container, add all the individual type collapsibles
     for (const type in typeRankings) {
         if (type === "Overall") continue;
 
@@ -450,9 +470,22 @@ function populateRankingSections() {
         });
 
         innerContent.appendChild(list);
-        typeContent.appendChild(btn);
-        typeContent.appendChild(innerContent);
+        typeGroupContent.appendChild(btn);
+        typeGroupContent.appendChild(innerContent);
     }
+
+    // Overall Attacker Rankings (just fill the existing container)
+    const overallList = document.createElement("ul");
+    overallList.className = "ranking-list";
+
+    const overallRankings = typeRankings["Overall"] || [];
+    overallRankings.forEach((pkmn, index) => {
+        const item = document.createElement("li");
+        item.innerText = `${index + 1}. ${pkmn.label} — ${pkmn.damage} dmg`;
+        overallList.appendChild(item);
+    });
+
+    overallContent.appendChild(overallList);
 
     // Max Guard Rankings
     const guardList = document.createElement("ul");
@@ -486,7 +519,7 @@ function populateRankingSections() {
     });
     bulkContent.appendChild(bulkList);
 
-    // Enable interactivity
+    // Enable interactivity for all collapsibles on the page
     document.querySelectorAll(".collapsible").forEach(btn => {
         btn.addEventListener("click", function () {
             this.classList.toggle("active");
@@ -498,5 +531,8 @@ function populateRankingSections() {
             }
         });
     });
-} // end populateRankingSections
+}
+
+
+
 

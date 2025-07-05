@@ -71,8 +71,11 @@
 
 <!-- Collapsible Sections -->
 <div class="typeRankingsContainer" style="margin: 20px;">
-    <button type="button" class="collapsible">Type-Attacker Rankings</button>
-    <div class="content" id="typeAttackersContent"></div>
+
+    <div id="typeAttackersContent" style="margin-top: 20px;"></div>
+
+    <button type="button" class="collapsible">Overall Attacker Rankings</button>
+    <div class="content" id="overallAttackersContent"></div>
 
     <button type="button" class="collapsible">Max Guard Rankings</button>
     <div class="content" id="maxGuardContent"></div>
@@ -85,20 +88,7 @@
 </div>
 
 <script src="JS/baseStats.js"></script>
-<script>
-    const collapsibles = document.querySelectorAll(".collapsible");
-    collapsibles.forEach(button => {
-        button.addEventListener("click", function () {
-            this.classList.toggle("active");
-            const content = this.nextElementSibling;
-            if (content.style.maxHeight) {
-                content.style.maxHeight = null;
-            } else {
-                content.style.maxHeight = content.scrollHeight + "px";
-            }
-        });
-    });
-</script>
+
 </body>
 </html>
 

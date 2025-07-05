@@ -155,19 +155,19 @@
         "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
         "Normal": false, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
     },
-    {"Name": "Gastly", "D-max": true, "G-max": false, "Type1": "Water", "Type2": false,
+    {"Name": "Gastly", "D-max": true, "G-max": false, "Type1": "Ghost", "Type2": "Water",
 
         "Bug": false, "Dark": true, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": false, "Flying": false, "Ghost": true, "Grass": false, "Ground": false, "Ice": false,
         "Normal": false, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
     },
-    {"Name": "Haunter", "D-max": true, "G-max": false, "Type1": "Water", "Type2": false,
+    {"Name": "Haunter", "D-max": true, "G-max": false, "Type1": "Ghost", "Type2": "Poison",
 
         "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": false, "Flying": false, "Ghost": true, "Grass": false, "Ground": false, "Ice": false,
         "Normal": false, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
     },
-    {"Name": "Gengar", "D-max": true, "G-max": true, "Type1": "Water", "Type2": false,
+    {"Name": "Gengar", "D-max": true, "G-max": true, "Type1": "Ghost", "Type2": "Poison",
 
         "Bug": false, "Dark": true, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": false, "Flying": false, "Ghost": true, "Grass": false, "Ground": false, "Ice": false,
