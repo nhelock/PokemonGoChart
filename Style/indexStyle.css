@@ -200,6 +200,85 @@ canvas {
     background-color: #b3b3b3;
 }
 
+/* Dynamax Result Box */
+
+/* Container for each Pokémon search result */
+.pkmnResultBox {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #f0f4ff;
+    border: 1px solid #3e60b4;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 20px;
+    max-width: 420px;
+    box-shadow: 0 2px 6px rgba(62, 96, 180, 0.25);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #1a1a1a;
+}
+
+/* Pokémon name header */
+.pkmnResultBox h3 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    color: #2a3f87;
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+/* The info table */
+.pokemon-info {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1rem;
+}
+
+/* Table body rows */
+.pokemon-info tbody tr {
+    border-bottom: 1px solid #cbd4f7;
+}
+
+/* Left column: labels */
+.pokemon-info th {
+    text-align: left;
+    padding: 8px 12px;
+    background-color: #3e60b4;
+    color: white;
+    font-weight: 600;
+    width: 45%;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+
+/* Right column: values */
+.pokemon-info td {
+    text-align: left;
+    padding: 8px 12px;
+    background-color: #e4e9ff;
+    color: #1a1a1a;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+/* Remove bottom border for last row */
+.pokemon-info tbody tr:last-child {
+    border-bottom: none;
+}
+
+/* Responsive: on small screens, table fits nicely */
+@media (max-width: 480px) {
+    .pkmnResultBox {
+        max-width: 100%;
+        padding: 14px 16px;
+    }
+    .pokemon-info th,
+    .pokemon-info td {
+        padding: 6px 8px;
+        font-size: 0.9rem;
+    }
+}
+
+
 
 
 

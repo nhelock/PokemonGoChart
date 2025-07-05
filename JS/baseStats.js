@@ -393,13 +393,14 @@ function displayPokemonRanking() {
 
     matches.forEach(pkmn => {
         const typeDisplay = [pkmn.type1, pkmn.type2].filter(Boolean).join(" / ");
-        const rankings = [];
 
-        for (const type of pkmn.types) {
+        // Get rankings per type
+        const rankingsRows = pkmn.types.map(type => {
             const rank = typeRankings[type].findIndex(p => p.label === pkmn.label) + 1;
-            rankings.push(`<li>${type} Attacker Rank: ${rank}</li>`);
-        }
+            return `<tr><th>${type} Attacker Rank</th><td>#${rank}</td></tr>`;
+        }).join("");
 
+        // Overall ranks
         const overallRank = typeRankings["Overall"].findIndex(p => p.label === pkmn.label) + 1;
         const guardRank = maxGuardRanking.findIndex(p => p.label === pkmn.label) + 1;
         const spiritRank = maxSpiritRanking.findIndex(p => p.label === pkmn.label) + 1;
@@ -407,19 +408,22 @@ function displayPokemonRanking() {
         const section = `
             <div class="pkmnResultBox">
                 <h3>${pkmn.label}</h3>
-                <p>Type: ${typeDisplay}</p>
-                <ul>
-                    ${rankings.join("")}
-                    <li>Overall Attacker Rank: ${overallRank}</li>
-                    <li>Max Guard Rank (Defense): ${guardRank}</li>
-                    <li>Max Spirit Rank (HP): ${spiritRank}</li>
-                </ul>
+                <table class="pokemon-info" style="width:100%; max-width:400px;">
+                    <tbody>
+                        <tr><th>Type</th><td>${typeDisplay}</td></tr>
+                        ${rankingsRows}
+                        <tr><th>Overall Attacker Rank</th><td>#${overallRank}</td></tr>
+                        <tr><th>Max Guard Rank (Defense)</th><td>#${guardRank}</td></tr>
+                        <tr><th>Max Spirit Rank (HP)</th><td>#${spiritRank}</td></tr>
+                    </tbody>
+                </table>
             </div>
         `;
 
         resultBox.innerHTML += section;
     });
 }
+
 function populateRankingSections() {
     const typeContent = document.getElementById("typeAttackersContent");
     const overallContent = document.getElementById("overallAttackersContent");
