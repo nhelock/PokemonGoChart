@@ -40,7 +40,21 @@
     <!-- Type Rankings (to be populated dynamically) -->
     <div class="typeRankingsContainer" id="typeRankingsContainer" style="margin: 20px;"></div>
 
-    <!-- Scripts -->
+    <!-- Script includes -->
     <script src="JS/baseStats.js"></script>
+
+    <script>
+        // Handle Enter key for search
+        document.getElementById("searchBar").addEventListener("keydown", function (event) {
+            if (event.key === "Enter") {
+                const suggestions = document.querySelectorAll(".suggestionItem");
+                if (suggestions.length > 0) {
+                    document.getElementById("searchBar").value = suggestions[0].innerText;
+                }
+                document.getElementById("suggestions").innerHTML = '';
+                displayPokemonRanking();
+            }
+        });
+    </script>
 </body>
 </html>
