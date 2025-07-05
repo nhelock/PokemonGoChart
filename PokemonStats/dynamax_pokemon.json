@@ -1,428 +1,442 @@
 [
-    {"Name": "Skwovet", "G-max": false, "Type1": "Normal", "Type2": false,
+    {"Name": "Skwovet", "D-max": true, "G-max": false, "Type1": "Normal", "Type2": false,
 
         "Bug": false, "Dark": true, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": false, "Flying": false, "Ghost": false, "Grass": true, "Ground": false, "Ice": false,
         "Normal": true, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
     },
-    {"Name": "Greedent", "G-max": false, "Type1": "Normal", "Type2": false,
+    {"Name": "Greedent", "D-max": true, "G-max": false, "Type1": "Normal", "Type2": false,
 
         "Bug": false, "Dark": true, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": false, "Flying": false, "Ghost": false, "Grass": true, "Ground": true, "Ice": false,
         "Normal": true, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
     },
-    {"Name": "Wooloo", "G-max": false, "Type1": "Normal", "Type2": false,
+    {"Name": "Wooloo", "D-max": true, "G-max": false, "Type1": "Normal", "Type2": false,
 
         "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
         "Normal": true, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
     },
-    {"Name": "Dubwool", "G-max": false, "Type1": "Normal", "Type2": false,
+    {"Name": "Dubwool", "D-max": true, "G-max": false, "Type1": "Normal", "Type2": false,
 
         "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": true,
         "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
         "Normal": true, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
     },   
-    {"Name": "Bulbasaur", "G-max": false, "Type1": "Grass", "Type2": "Poison",
+    {"Name": "Bulbasaur", "D-max": true, "G-max": false, "Type1": "Grass", "Type2": "Poison",
 
         "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": false, "Flying": false, "Ghost": false, "Grass": true, "Ground": false, "Ice": false,
         "Normal": true, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
     },
-    {"Name": "Ivysaur", "G-max": false, "Type1": "Grass", "Type2": "Poison",
+    {"Name": "Ivysaur", "D-max": true, "G-max": false, "Type1": "Grass", "Type2": "Poison",
 
         "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": false, "Flying": false, "Ghost": false, "Grass": true, "Ground": false, "Ice": false,
         "Normal": false, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
     },  
-    {"Name": "Venusaur", "G-max": true, "Type1": "Grass", "Type2": "Poison",
+    {"Name": "Venusaur", "D-max": true, "G-max": true, "Type1": "Grass", "Type2": "Poison",
 
         "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": false, "Flying": false, "Ghost": false, "Grass": true, "Ground": false, "Ice": false,
         "Normal": false, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
     },
-    {"Name": "Charmander", "G-max": false, "Type1": "Fire", "Type2": false,
+    {"Name": "Charmander", "D-max": true, "G-max": false, "Type1": "Fire", "Type2": false,
 
         "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": true, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
         "Normal": true, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
     },   
-    {"Name": "Charmeleon", "G-max": false, "Type1": "Fire", "Type2": false,
+    {"Name": "Charmeleon", "D-max": true, "G-max": false, "Type1": "Fire", "Type2": false,
 
         "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": true, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
         "Normal": true, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
     },
-    {"Name": "Charizard", "G-max": true, "Type1": "Fire", "Type2": "Flying",
+    {"Name": "Charizard", "D-max": true, "G-max": true, "Type1": "Fire", "Type2": "Flying",
 
         "Bug": false, "Dark": false, "Dragon": true, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": true, "Flying": true, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
         "Normal": false, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
     },
-    {"Name": "Squirtle", "G-max": false, "Type1": "Water", "Type2": false,
+    {"Name": "Squirtle", "D-max": true, "G-max": false, "Type1": "Water", "Type2": false,
 
         "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
         "Normal": true, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": true
     },
-    {"Name": "Wartortle", "G-max": false, "Type1": "Water", "Type2": false,
+    {"Name": "Wartortle", "D-max": true, "G-max": false, "Type1": "Water", "Type2": false,
 
         "Bug": false, "Dark": true, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
         "Normal": false, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": true
     },
-    {"Name": "Blastoise", "G-max": false, "Type1": "Water", "Type2": false,
+    {"Name": "Blastoise", "D-max": true, "G-max": false, "Type1": "Water", "Type2": false,
 
         "Bug": false, "Dark": true, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
         "Normal": false, "Poison": false, "Psychic": false, "Rock": true, "Steel": false, "Water": true
     },
-    {"Name": "Beldum", "G-max": false, "Type1": "Steel", "Type2": "Psychic",
+    {"Name": "Beldum", "D-max": true, "G-max": false, "Type1": "Steel", "Type2": "Psychic",
 
         "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
         "Normal": true, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
     },
-    {"Name": "Metang", "G-max": false, "Type1": "Steel", "Type2": "Psychic",
+    {"Name": "Metang", "D-max": true, "G-max": false, "Type1": "Steel", "Type2": "Psychic",
 
         "Bug": true, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
         "Normal": false, "Poison": false, "Psychic": true, "Rock": false, "Steel": true, "Water": false
     },
-    {"Name": "Metagross", "G-max": false, "Type1": "Steel", "Type2": "Psychic",
+    {"Name": "Metagross", "D-max": true, "G-max": false, "Type1": "Steel", "Type2": "Psychic",
 
         "Bug": true, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
         "Normal": false, "Poison": false, "Psychic": true, "Rock": false, "Steel": true, "Water": false
     },
-    {"Name": "Grookey", "G-max": false, "Type1": "Grass", "Type2": false,
+    {"Name": "Grookey", "D-max": true, "G-max": false, "Type1": "Grass", "Type2": false,
 
         "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": false, "Flying": false, "Ghost": false, "Grass": true, "Ground": false, "Ice": false,
         "Normal": true, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
     },
-    {"Name": "Thwackey", "G-max": false, "Type1": "Grass", "Type2": false,
+    {"Name": "Thwackey", "D-max": true, "G-max": false, "Type1": "Grass", "Type2": false,
 
         "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": false, "Flying": false, "Ghost": false, "Grass": true, "Ground": false, "Ice": false,
         "Normal": true, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
     },
-    {"Name": "Rillaboom", "G-max": true, "Type1": "Grass", "Type2": false,
+    {"Name": "Rillaboom", "D-max": true, "G-max": true, "Type1": "Grass", "Type2": false,
 
         "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": false, "Flying": false, "Ghost": false, "Grass": true, "Ground": false, "Ice": false,
         "Normal": true, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
     },
-    {"Name": "Scorbunny", "G-max": false, "Type1": "Fire", "Type2": false,
+    {"Name": "Scorbunny", "D-max": true, "G-max": false, "Type1": "Fire", "Type2": false,
 
         "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": true, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
         "Normal": true, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
     },
-    {"Name": "Raboot", "G-max": false, "Type1": "Fire", "Type2": false,
+    {"Name": "Raboot", "D-max": true, "G-max": false, "Type1": "Fire", "Type2": false,
 
         "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": true, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
         "Normal": true, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
     },
-    {"Name": "Cinderace", "G-max": true, "Type1": "Fire", "Type2": false,
+    {"Name": "Cinderace", "D-max": true, "G-max": true, "Type1": "Fire", "Type2": false,
 
         "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": true, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
         "Normal": true, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
     },
-    {"Name": "Sobble", "G-max": false, "Type1": "Water", "Type2": false,
+    {"Name": "Sobble", "D-max": true, "G-max": false, "Type1": "Water", "Type2": false,
 
         "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
         "Normal": true, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": true
     },
-    {"Name": "Drizzile", "G-max": false, "Type1": "Water", "Type2": false,
+    {"Name": "Drizzile", "D-max": true, "G-max": false, "Type1": "Water", "Type2": false,
 
         "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
         "Normal": true, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": true
     },
-    {"Name": "Inteleon", "G-max": true, "Type1": "Water", "Type2": false,
+    {"Name": "Inteleon", "D-max": true, "G-max": true, "Type1": "Water", "Type2": false,
 
         "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
         "Normal": true, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": true
     },
-    {"Name": "Falinks", "G-max": false, "Type1": "Fighting", "Type2": false,
+    {"Name": "Falinks", "D-max": true, "G-max": false, "Type1": "Fighting", "Type2": false,
 
         "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": true,
         "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
         "Normal": false, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
     },
-    {"Name": "Gastly", "G-max": false, "Type1": "Water", "Type2": false,
+    {"Name": "Gastly", "D-max": true, "G-max": false, "Type1": "Water", "Type2": false,
 
         "Bug": false, "Dark": true, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": false, "Flying": false, "Ghost": true, "Grass": false, "Ground": false, "Ice": false,
         "Normal": false, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
     },
-    {"Name": "Haunter", "G-max": false, "Type1": "Water", "Type2": false,
+    {"Name": "Haunter", "D-max": true, "G-max": false, "Type1": "Water", "Type2": false,
 
         "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": false, "Flying": false, "Ghost": true, "Grass": false, "Ground": false, "Ice": false,
         "Normal": false, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
     },
-    {"Name": "Gengar", "G-max": true, "Type1": "Water", "Type2": false,
+    {"Name": "Gengar", "D-max": true, "G-max": true, "Type1": "Water", "Type2": false,
 
         "Bug": false, "Dark": true, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": false, "Flying": false, "Ghost": true, "Grass": false, "Ground": false, "Ice": false,
         "Normal": false, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
     },
-    {"Name": "Drilbur", "G-max": false, "Type1": "Ground", "Type2": false,
+    {"Name": "Drilbur", "D-max": true, "G-max": false, "Type1": "Ground", "Type2": false,
 
         "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": true, "Ice": false,
         "Normal": true, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
     },
-    {"Name": "Excadrill", "G-max": false, "Type1": "Ground", "Type2": "Steel",
+    {"Name": "Excadrill", "D-max": true, "G-max": false, "Type1": "Ground", "Type2": "Steel",
 
         "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": true, "Ice": false,
         "Normal": false, "Poison": false, "Psychic": false, "Rock": false, "Steel": true, "Water": false
     },
-    {"Name": "Toxtricity", "G-max": true, "Type1": "Electric", "Type2": "Poison",
+    {"Name": "Toxtricity", "D-max": true, "G-max": true, "Type1": "Electric", "Type2": "Poison",
 
         "Bug": false, "Dark": false, "Dragon": false, "Electric": true, "Fairy": false, "Fighting": false,
         "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
         "Normal": false, "Poison": true, "Psychic": false, "Rock": false, "Steel": false, "Water": false
     },
-    {"Name": "Machop", "G-max": false, "Type1": "Fighting", "Type2": false,
+    {"Name": "Machop", "D-max": true, "G-max": false, "Type1": "Fighting", "Type2": false,
 
         "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": true,
         "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
         "Normal": false, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
     },
-    {"Name": "Machoke", "G-max": false, "Type1": "Fighting", "Type2": false,
+    {"Name": "Machoke", "D-max": true, "G-max": false, "Type1": "Fighting", "Type2": false,
 
         "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": true,
         "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
         "Normal": false, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
     },
-    {"Name": "Machamp", "G-max": true, "Type1": "Fighting", "Type2": false,
+    {"Name": "Machamp", "D-max": true, "G-max": true, "Type1": "Fighting", "Type2": false,
 
         "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": true,
         "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
         "Normal": false, "Poison": false, "Psychic": false, "Rock": false, "Steel": true, "Water": false
     },
-    {"Name": "Krabby", "G-max": false, "Type1": "Water", "Type2": false,
+    {"Name": "Krabby", "D-max": true, "G-max": false, "Type1": "Water", "Type2": false,
 
         "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": true, "Ice": false,
         "Normal": false, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": true
     },
-    {"Name": "Kingler", "G-max": false, "Type1": "Water", "Type2": false,
+    {"Name": "Kingler", "D-max": true, "G-max": false, "Type1": "Water", "Type2": false,
 
         "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": true,
         "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
         "Normal": false, "Poison": false, "Psychic": false, "Rock": false, "Steel": true, "Water": false
     },
-    {"Name": "Cryogonal", "G-max": false, "Type1": "Ice", "Type2": false,
+    {"Name": "Cryogonal", "D-max": true, "G-max": false, "Type1": "Ice", "Type2": false,
 
         "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": true,
         "Normal": false, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
     },
-    {"Name": "Articuno", "G-max": false, "Type1": "Ice", "Type2": "Flying",
+    {"Name": "Articuno", "D-max": true, "G-max": false, "Type1": "Ice", "Type2": "Flying",
 
         "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": true,
         "Normal": false, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
     },
-    {"Name": "Zapdos", "G-max": false, "Type1": "Electric", "Type2": "Flying",
+    {"Name": "Zapdos", "D-max": true, "G-max": false, "Type1": "Electric", "Type2": "Flying",
 
         "Bug": false, "Dark": false, "Dragon": false, "Electric": true, "Fairy": false, "Fighting": false,
         "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
         "Normal": false, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
     },
-    {"Name": "Moltres", "G-max": false, "Type1": "Fire", "Type2": "Flying",
+    {"Name": "Moltres", "D-max": true, "G-max": false, "Type1": "Fire", "Type2": "Flying",
 
         "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": true, "Flying": true, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
         "Normal": false, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
     },
-    {"Name": "Pidove", "G-max": false, "Type1": "Normal", "Type2": "Flying",
+    {"Name": "Pidove", "D-max": true, "G-max": false, "Type1": "Normal", "Type2": "Flying",
 
         "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": false, "Flying": true, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
         "Normal": true, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
     },
-    {"Name": "Tranquill", "G-max": false, "Type1": "Normal", "Type2": "Flying",
-
-        "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
-        "Fire": false, "Flying": true, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
-        "Normal": false, "Poison": false, "Psychic": false, "Rock": false, "Steel": true, "Water": false
-    },
-    {"Name": "Unfezant", "G-max": false, "Type1": "Normal", "Type2": "Flying",
+    {"Name": "Tranquill", "D-max": true, "G-max": false, "Type1": "Normal", "Type2": "Flying",
 
         "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": false, "Flying": true, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
         "Normal": false, "Poison": false, "Psychic": false, "Rock": false, "Steel": true, "Water": false
     },
-    {"Name": "Darumaka", "G-max": false, "Type1": "Fire", "Type2": false,
+    {"Name": "Unfezant", "D-max": true, "G-max": false, "Type1": "Normal", "Type2": "Flying",
+
+        "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
+        "Fire": false, "Flying": true, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
+        "Normal": false, "Poison": false, "Psychic": false, "Rock": false, "Steel": true, "Water": false
+    },
+    {"Name": "Darumaka", "D-max": true, "G-max": false, "Type1": "Fire", "Type2": false,
 
         "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": true, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
         "Normal": true, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
     },
-    {"Name": "Darmanitan", "G-max": false, "Type1": "Fire", "Type2": false,
+    {"Name": "Darmanitan", "D-max": true, "G-max": false, "Type1": "Fire", "Type2": false,
 
         "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": true, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
         "Normal": true, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
     },
-    {"Name": "Kubfu", "G-max": false, "Type1": "Fighting", "Type2": false,
+    {"Name": "Kubfu", "D-max": true, "G-max": false, "Type1": "Fighting", "Type2": false,
 
         "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": true,
         "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
         "Normal": false, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
     },
-    {"Name": "Raikou", "G-max": false, "Type1": "Electric", "Type2": false,
+    {"Name": "Raikou", "D-max": true, "G-max": false, "Type1": "Electric", "Type2": false,
 
         "Bug": false, "Dark": false, "Dragon": false, "Electric": true, "Fairy": false, "Fighting": false,
         "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
         "Normal": false, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
     },
-    {"Name": "Chansey", "G-max": false, "Type1": "Normal", "Type2": false,
+    {"Name": "Chansey", "D-max": true, "G-max": false, "Type1": "Normal", "Type2": false,
 
         "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
         "Normal": true, "Poison": false, "Psychic": true, "Rock": false, "Steel": false, "Water": false
     },
-    {"Name": "Blissey", "G-max": false, "Type1": "Normal", "Type2": false,
+    {"Name": "Blissey", "D-max": true, "G-max": false, "Type1": "Normal", "Type2": false,
 
         "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
         "Normal": true, "Poison": false, "Psychic": true, "Rock": false, "Steel": false, "Water": false
     },
-    {"Name": "Caterpie", "G-max": false, "Type1": "Bug", "Type2": false,
+    {"Name": "Caterpie", "D-max": true, "G-max": false, "Type1": "Bug", "Type2": false,
 
         "Bug": true, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
         "Normal": true, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
     },
-    {"Name": "Metapod", "G-max": false, "Type1": "Bug", "Type2": false,
+    {"Name": "Metapod", "D-max": true, "G-max": false, "Type1": "Bug", "Type2": false,
 
         "Bug": true, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
         "Normal": true, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
     },
-    {"Name": "Butterfree", "G-max": false, "Type1": "Bug", "Type2": "Flying",
+    {"Name": "Butterfree", "D-max": true, "G-max": false, "Type1": "Bug", "Type2": "Flying",
 
         "Bug": true, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
         "Normal": false, "Poison": false, "Psychic": true, "Rock": false, "Steel": false, "Water": false
     },
-    {"Name": "Passimian", "G-max": false, "Type1": "Fighting", "Type2": false,
+    {"Name": "Passimian", "D-max": true, "G-max": false, "Type1": "Fighting", "Type2": false,
 
         "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": true,
         "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
         "Normal": true, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
     },
-    {"Name": "Entei", "G-max": false, "Type1": "Fire", "Type2": false,
+    {"Name": "Entei", "D-max": true, "G-max": false, "Type1": "Fire", "Type2": false,
 
         "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": true, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
         "Normal": false, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
     },
-    {"Name": "Suicune", "G-max": false, "Type1": "Water", "Type2": false,
+    {"Name": "Suicune", "D-max": true, "G-max": false, "Type1": "Water", "Type2": false,
 
         "Bug": false, "Dark": true, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": true,
         "Normal": true, "Poison": false, "Psychic": true, "Rock": false, "Steel": false, "Water": false
     },
-    {"Name": "Sableye", "G-max": false, "Type1": "Dark", "Type2": "Ghost",
+    {"Name": "Sableye", "D-max": true, "G-max": false, "Type1": "Dark", "Type2": "Ghost",
 
         "Bug": false, "Dark": true, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": false, "Flying": false, "Ghost": true, "Grass": false, "Ground": false, "Ice": false,
         "Normal": false, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
     },
-    {"Name": "Urshifu Single Strike", "G-max": false, "Type1": "Fighting", "Type2": "Dark",
+    {"Name": "Urshifu Single Strike", "D-max": true, "G-max": false, "Type1": "Fighting", "Type2": "Dark",
 
         "Bug": false, "Dark": true, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": true,
         "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
         "Normal": false, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
     },
-    {"Name": "Urshifu Rapid Strike", "G-max": false, "Type1": "Normal", "Type2": "Water",
+    {"Name": "Urshifu Rapid Strike", "D-max": true, "G-max": false, "Type1": "Normal", "Type2": "Water",
 
         "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": true,
         "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
         "Normal": false, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": true
     },
-    {"Name": "Rookidee", "G-max": false, "Type1": "Flying", "Type2": false,
+    {"Name": "Rookidee", "D-max": true, "G-max": false, "Type1": "Flying", "Type2": false,
 
         "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": false, "Flying": true, "Ghost": false, "Grass": false, "Ground": true, "Ice": false,
         "Normal": false, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
     },
-    {"Name": "Corvisquire", "G-max": false, "Type1": "Flying", "Type2": false,
+    {"Name": "Corvisquire", "D-max": true, "G-max": false, "Type1": "Flying", "Type2": false,
 
         "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": false, "Flying": true, "Ghost": false, "Grass": false, "Ground": true, "Ice": false,
         "Normal": false, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
     },
-    {"Name": "Corviknight", "G-max": false, "Type1": "Flying", "Type2": "Steel",
+    {"Name": "Corviknight", "D-max": true, "G-max": false, "Type1": "Flying", "Type2": "Steel",
 
         "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": false, "Flying": true, "Ghost": false, "Grass": false, "Ground": true, "Ice": false,
         "Normal": false, "Poison": false, "Psychic": false, "Rock": false, "Steel": true, "Water": false
     },
-    {"Name": "Hatenna", "G-max": false, "Type1": "Psychic", "Type2": false,
+    {"Name": "Hatenna", "D-max": true, "G-max": false, "Type1": "Psychic", "Type2": false,
 
         "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": true, "Fighting": false,
         "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
         "Normal": false, "Poison": false, "Psychic": true, "Rock": false, "Steel": false, "Water": false
     },
-    {"Name": "Hattrem", "G-max": false, "Type1": "Psychic", "Type2": false,
+    {"Name": "Hattrem", "D-max": true, "G-max": false, "Type1": "Psychic", "Type2": false,
 
         "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": true, "Fighting": false,
         "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
         "Normal": false, "Poison": false, "Psychic": true, "Rock": false, "Steel": false, "Water": false
     },
-    {"Name": "Hatterene", "G-max": false, "Type1": "Psychic", "Type2": "Fairy",
+    {"Name": "Hatterene", "D-max": true, "G-max": false, "Type1": "Psychic", "Type2": "Fairy",
 
         "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": true, "Fighting": false,
         "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
         "Normal": false, "Poison": false, "Psychic": true, "Rock": false, "Steel": false, "Water": false
     },
-    {"Name": "Shuckle", "G-max": false, "Type1": "Bug", "Type2": "Rock",
+    {"Name": "Shuckle", "D-max": true, "G-max": false, "Type1": "Bug", "Type2": "Rock",
 
         "Bug": true, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
         "Normal": false, "Poison": false, "Psychic": false, "Rock": true, "Steel": false, "Water": false
     },
-    {"Name": "Wailmer", "G-max": false, "Type1": "Water", "Type2": false,
+    {"Name": "Wailmer", "D-max": true, "G-max": false, "Type1": "Water", "Type2": false,
 
         "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
         "Normal": false, "Poison": false, "Psychic": false, "Rock": true, "Steel": false, "Water": true
     },
-    {"Name": "Wailord", "G-max": false, "Type1": "Water", "Type2": false,
+    {"Name": "Wailord", "D-max": true, "G-max": false, "Type1": "Water", "Type2": false,
 
         "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
         "Normal": false, "Poison": false, "Psychic": true, "Rock": true, "Steel": false, "Water": true
     },
-    {"Name": "Kabuto", "G-max": false, "Type1": "Rock", "Type2": "Water",
+    {"Name": "Kabuto", "D-max": true, "G-max": false, "Type1": "Rock", "Type2": "Water",
 
         "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": true, "Ice": false,
         "Normal": true, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
     },
-    {"Name": "Kabutops", "G-max": false, "Type1": "Rock", "Type2": "Water",
+    {"Name": "Kabutops", "D-max": true, "G-max": false, "Type1": "Rock", "Type2": "Water",
 
         "Bug": true, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": true,
         "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": true, "Ice": false,
         "Normal": false, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": true
+    },
+
+
+
+
+    {"Name": "Lapras", "D-max": false, "G-max": true, "Type1": "Ice", "Type2": "Water",
+
+        "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
+        "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
+        "Normal": false, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": true
+    },
+    {"Name": "Snorlax", "D-max": false, "G-max": true, "Type1": "Normal", "Type2": "False",
+
+        "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
+        "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
+        "Normal": true, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
     }
 
 
 
-
-        
 
 ]
