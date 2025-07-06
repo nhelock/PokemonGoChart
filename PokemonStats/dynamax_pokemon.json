@@ -71,7 +71,7 @@
         "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
         "Normal": false, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": true
     },
-    {"Name": "Blastoise", "D-max": true, "G-max": false, "Type1": "Water", "Type2": false,
+    {"Name": "Blastoise", "D-max": true, "G-max": true, "Type1": "Water", "Type2": false,
 
         "Bug": false, "Dark": true, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
