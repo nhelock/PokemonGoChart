@@ -433,60 +433,63 @@ function populateRankingSections() {
 
     if (!typeContent || !overallContent || !maxGuardContent || !maxSpiritContent || !bulkContent) return;
 
-    // Clear all contents first
+
     typeContent.innerHTML = '';
     overallContent.innerHTML = '';
     maxGuardContent.innerHTML = '';
     maxSpiritContent.innerHTML = '';
     bulkContent.innerHTML = '';
 
-    // ----- TYPE GROUP COLLAPSIBLE (Outer) -----
-    const typeGroupBtn = document.createElement("button");
-    typeGroupBtn.className = "collapsible";
-    typeGroupBtn.innerText = "Attacker Ranking by Type";
+    // --- Attacker Ranking by Type ---
+    const outerDetails = document.createElement("details");
+    outerDetails.open = false;
 
-    const typeGroupContent = document.createElement("div");
-    typeGroupContent.className = "content";
+    const outerSummary = document.createElement("summary");
+    outerSummary.textContent = "Attacker Ranking by Type";
+    outerDetails.appendChild(outerSummary);
 
-    typeContent.appendChild(typeGroupBtn);
-    typeContent.appendChild(typeGroupContent);
-
-    // ----- Inner Type Buttons -----
+    // Create inner details for each type except "Overall"
     for (const type in typeRankings) {
         if (type === "Overall") continue;
 
-        const btn = document.createElement("button");
-        btn.className = "collapsible";
-        btn.innerText = `${type} Attackers`;
+        const innerDetails = document.createElement("details");
+        innerDetails.open = false;
 
-        const innerContent = document.createElement("div");
-        innerContent.className = "content";
+        const innerSummary = document.createElement("summary");
+        innerSummary.textContent = `${type} Attackers`;
+        innerDetails.appendChild(innerSummary);
 
         const table = document.createElement("table");
         table.className = "ranking-table";
 
         const thead = document.createElement("thead");
-        thead.innerHTML = "<tr><th>Place</th><th>Name</th><th>Damage</th>";
+        thead.innerHTML = "<tr><th>Place</th><th>Name</th><th>Damage</th></tr>";
         table.appendChild(thead);
 
         const tbody = document.createElement("tbody");
-
         typeRankings[type].forEach((pkmn, index) => {
             const row = document.createElement("tr");
             row.innerHTML = `<td>${index + 1}</td><td>${pkmn.label}</td><td>${pkmn.damage} dmg</td>`;
             tbody.appendChild(row);
         });
-
         table.appendChild(tbody);
-        innerContent.appendChild(table);
-        typeGroupContent.appendChild(btn);
-        typeGroupContent.appendChild(innerContent);
+
+        innerDetails.appendChild(table);
+        outerDetails.appendChild(innerDetails);
     }
 
-    // ----- Overall Attacker Rankings -----
+    typeContent.appendChild(outerDetails);
+
+    // --- Overall Attacker Rankings ---
+    const overallDetails = document.createElement("details");
+    overallDetails.open = false;
+
+    const overallSummary = document.createElement("summary");
+    overallSummary.textContent = "Overall Attacker Rankings";
+    overallDetails.appendChild(overallSummary);
+
     const overallTable = document.createElement("table");
     overallTable.className = "ranking-table";
-
     overallTable.innerHTML = `
         <thead><tr><th>Place</th><th>Name</th><th>Damage</th></tr></thead>
         <tbody>
@@ -495,12 +498,19 @@ function populateRankingSections() {
             `).join("")}
         </tbody>
     `;
-    overallContent.appendChild(overallTable);
+    overallDetails.appendChild(overallTable);
+    overallContent.appendChild(overallDetails);
 
-    // ----- Max Guard Rankings -----
+    // --- Max Guard Rankings ---
+    const guardDetails = document.createElement("details");
+    guardDetails.open = false;
+
+    const guardSummary = document.createElement("summary");
+    guardSummary.textContent = "Max Guard Rankings";
+    guardDetails.appendChild(guardSummary);
+
     const guardTable = document.createElement("table");
     guardTable.className = "ranking-table";
-
     guardTable.innerHTML = `
         <thead><tr><th>Place</th><th>Name</th><th>Defense</th></tr></thead>
         <tbody>
@@ -509,12 +519,19 @@ function populateRankingSections() {
             `).join("")}
         </tbody>
     `;
-    maxGuardContent.appendChild(guardTable);
+    guardDetails.appendChild(guardTable);
+    maxGuardContent.appendChild(guardDetails);
 
-    // ----- Max Spirit Rankings -----
+    // --- Max Spirit Rankings ---
+    const spiritDetails = document.createElement("details");
+    spiritDetails.open = false;
+
+    const spiritSummary = document.createElement("summary");
+    spiritSummary.textContent = "Max Spirit Rankings";
+    spiritDetails.appendChild(spiritSummary);
+
     const spiritTable = document.createElement("table");
     spiritTable.className = "ranking-table";
-
     spiritTable.innerHTML = `
         <thead><tr><th>Place</th><th>Name</th><th>HP Bonus</th></tr></thead>
         <tbody>
@@ -523,13 +540,20 @@ function populateRankingSections() {
             `).join("")}
         </tbody>
     `;
-    maxSpiritContent.appendChild(spiritTable);
+    spiritDetails.appendChild(spiritTable);
+    maxSpiritContent.appendChild(spiritDetails);
 
-    // ----- Bulk Rankings -----
+    // --- Bulk Rankings ---
+    const bulkDetails = document.createElement("details");
+    bulkDetails.open = false;
+
+    const bulkSummary = document.createElement("summary");
+    bulkSummary.textContent = "Bulk Rankings";
+    bulkDetails.appendChild(bulkSummary);
+
     const bulkSorted = [...allDynamaxInstances].sort((a, b) => (b.hp * b.defense) - (a.hp * a.defense));
     const bulkTable = document.createElement("table");
     bulkTable.className = "ranking-table";
-
     bulkTable.innerHTML = `
         <thead><tr><th>Place</th><th>Name</th><th>Bulk</th></tr></thead>
         <tbody>
@@ -539,30 +563,10 @@ function populateRankingSections() {
             }).join("")}
         </tbody>
     `;
-    bulkContent.appendChild(bulkTable);
-
-    // ----- Setup All Collapsibles -----
-    setTimeout(() => {
-        document.querySelectorAll(".collapsible").forEach(btn => {
-            btn.addEventListener("click", function () {
-                this.classList.toggle("active");
-                const content = this.nextElementSibling;
-                if (!content) return;
-
-                if (content.style.maxHeight) {
-                    content.style.maxHeight = null;
-                } else {
-                    content.style.maxHeight = content.scrollHeight + "px";
-
-                    const parentContent = this.closest(".content");
-                    if (parentContent && parentContent.style.maxHeight) {
-                        parentContent.style.maxHeight = parentContent.scrollHeight + "px";
-                    }
-                }
-            });
-        });
-    }, 0);
+    bulkDetails.appendChild(bulkTable);
+    bulkContent.appendChild(bulkDetails);
 }
+
 
 
 

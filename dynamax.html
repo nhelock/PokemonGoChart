@@ -1,115 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Dynamax Pokémon Comparison</title>
 
-    <!-- Meta tags for sharing -->
-    <meta property="og:title" content="Pokémon GO Dynamax Tool">
-    <meta property="og:description" content="Compare Dynamax Pokémon damage potential across types.">
-    <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/5/53/Pok%C3%A9_Ball_icon.svg">
-    <meta property="og:url" content="https://nhelock.github.io/PokemonGoChart/">
-    <meta property="og:type" content="website">
+    <!-- Meta tags -->
+    <meta property="og:title" content="Pokémon GO Dynamax Tool" />
+    <meta property="og:description" content="Compare Dynamax Pokémon damage potential across types." />
+    <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/5/53/Pok%C3%A9_Ball_icon.svg" />
+    <meta property="og:url" content="https://nhelock.github.io/PokemonGoChart/" />
+    <meta property="og:type" content="website" />
 
-    <link rel="icon" href="ImageAssets/Poké_Ball_icon.png" type="image/png">
-    <link rel="stylesheet" href="Style/indexStyle.css">
+    <link rel="icon" href="ImageAssets/Poké_Ball_icon.png" type="image/png" />
+    <link rel="stylesheet" href="Style/indexStyle.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <style>
-    .collapsible {
-        background-color: #3e60b4;
-        color: white;
-        cursor: pointer;
-        padding: 10px;
-        width: 100%;
+    
+    details {
         border: none;
-        text-align: left;
-        outline: none;
-        font-size: 16px;
-        transition: background-color 0.3s ease;
+        background-color: transparent;
         margin-top: 10px;
     }
 
-    .collapsible:hover {
+    details > summary {
+        list-style: none;
+        cursor: pointer;
+        font-size: 16px;
+        padding: 10px;
+        background-color: #3e60b4;
+        color: white;
+        border-radius: 4px;
+        user-select: none;
+        display: flex;
+        align-items: center;
+        transition: background-color 0.3s ease;
+        
+        list-style-type: none;
+    }
+
+    details > summary:hover {
         background-color: #2e4c91;
     }
 
-    .content {
-        padding: 0 18px;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease-out;
-        background-color: #f9f9f9;
+    
+    details > summary::-webkit-details-marker {
+        display: none;
     }
-
-    .collapsible.active + .content {
-        overflow: visible; /* ✅ Key fix */
-    }
-
-    .ranking-list {
-        list-style: none;
-        padding: 10px;
-    }
-    @media only screen and (max-width: 600px) {
-    body {
-        font-size: 15px;
-        padding: 0 10px;
-    }
-
-    .collapsible {
-        font-size: 16px;
-        padding: 12px;
-    }
-
-    .ranking-list li {
-        padding: 8px 0;
-        font-size: 15px;
-    }
-
-    .searchContainer {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        align-items: stretch;
-        margin: 20px 0;
-    }
-
-    .inputWrapper {
-        width: 100%;
-    }
-
-    #searchBar {
-        font-size: 16px;
-        padding: 10px;
-        width: 100%;
-        box-sizing: border-box;
-    }
-
-    .link-button {
-        font-size: 14px;
-        padding: 8px 12px;
+    details > summary::before {
+        content: "▶";
+        color: white;
         display: inline-block;
+        margin-right: 10px;
+        transition: transform 0.3s ease;
+        transform-origin: center;
+    }
+    details[open] > summary::before {
+        transform: rotate(90deg);
     }
 
-    .resultBox {
-        min-height: auto;
-        margin: 10px 0;
+    
+    details > *:not(summary) {
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height 0.4s ease;
+        background-color: #f9f9f9;
+        padding-left: 18px;
+        border-radius: 0 0 4px 4px;
     }
 
-    .titleBox .titleText {
-        font-size: 20px;
-        text-align: center;
+   
+    details[open] > *:not(summary) {
+        max-height: 1000px; 
+        padding: 10px 18px 15px 18px;
     }
 
-    .typeRankingsContainer {
-        margin: 10px 0;
+   
+    details > *:not(summary) details {
+        margin-top: 8px;
     }
-}
+
+    
+    table.ranking-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 5px;
+    }
+    table.ranking-table th, table.ranking-table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+        font-size: 14px;
+    }
+    table.ranking-table th {
+        background-color: #3e60b4;
+        color: white;
+    }
+
+    /* For Phones */
+    @media only screen and (max-width: 600px) {
+        body {
+            font-size: 15px;
+            padding: 0 10px;
+        }
+        details > summary {
+            font-size: 16px;
+            padding: 12px;
+        }
+        table.ranking-table th, table.ranking-table td {
+            font-size: 13px;
+            padding: 6px;
+        }
+    }
 
 </style>
-
 </head>
 <body>
 <header>
@@ -121,38 +127,38 @@
     <p class="titleText">Dynamax Pokémon Comparison</p>
 </div>
 
-<!-- Search Section -->
+<!-- Search Bar -->
 <div class="searchContainer">
     <div class="inputWrapper">
-        <input type="text" id="searchBar" placeholder="Enter Pokémon name..." oninput="showSuggestions()" autocomplete="off" />
+        <input
+            type="text"
+            id="searchBar"
+            placeholder="Enter Pokémon name..."
+            oninput="showSuggestions()"
+            autocomplete="off"
+        />
         <div id="suggestions" class="suggestionsBox"></div>
     </div>
     <button onclick="displayPokemonRanking()">Search</button>
 </div>
 
-<!-- Result Section (Space reserved for search result) -->
-<div class="resultBox" id="resultBox" style="text-align: center; min-height: 160px; margin: 20px;"></div>
+<!-- Results -->
+<div
+    class="resultBox"
+    id="resultBox"
+    style="text-align: center; min-height: 160px; margin: 20px;"
+></div>
 
-<!-- Collapsible Sections -->
+<!-- Specific Rankings -->
 <div class="typeRankingsContainer" style="margin: 20px;">
-
     <div id="typeAttackersContent" style="margin-top: 20px;"></div>
-
-    <button type="button" class="collapsible">Overall Attacker Rankings</button>
-    <div class="content" id="overallAttackersContent"></div>
-
-    <button type="button" class="collapsible">Max Guard Rankings</button>
-    <div class="content" id="maxGuardContent"></div>
-
-    <button type="button" class="collapsible">Max Spirit Rankings</button>
-    <div class="content" id="maxSpiritContent"></div>
-
-    <button type="button" class="collapsible">Bulk Rankings</button>
-    <div class="content" id="bulkContent"></div>
+    <div id="overallAttackersContent"></div>
+    <div id="maxGuardContent"></div>
+    <div id="maxSpiritContent"></div>
+    <div id="bulkContent"></div>
 </div>
 
 <script src="JS/baseStats.js"></script>
 
 </body>
 </html>
-
