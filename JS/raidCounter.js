@@ -103,42 +103,55 @@ function calculateCounters() {
 
   const defenderType1 = bossEntry.Type1;
   const defenderType2 = bossEntry.Type2 || null;
+
   const defenderStats = pokemonStats[bossEntry.Name];
   if (!defenderStats) {
     resultBox.innerHTML = `<p>No stats found for raid boss "${bossEntry.Name}".</p>`;
     return;
   }
 
-  const movePower = bossEntry['G-max'] ? 450 : bossEntry['D-max'] ? 350 : 300;
-  const allTypes = Object.keys(typeEffectiveness);
-
   const attackers = [];
 
   dynamaxEntries.forEach(attacker => {
-    const stats = pokemonStats[attacker.Name];
-    if (!stats) return;
+    const attackerStats = pokemonStats[attacker.Name];
+    if (!attackerStats) return;
 
-    let bestDamage = 0;
-    let bestType = '';
+    const moveTypes = Object.keys(typeEffectiveness).filter(t => attacker[t]);
 
-    allTypes.forEach(type => {
-      if (attacker[type]) {
-        const typeMultiplier = getDefensiveMultiplier(type, defenderType1, defenderType2);
-        if (typeMultiplier === 0) return;
-        const stab = (type === attacker.Type1 || type === attacker.Type2) ? 1.2 : 1;
-        const damage = 0.5 * movePower * (stats.attack / defenderStats.defense) * typeMultiplier * stab;
-        if (damage > bestDamage) {
-          bestDamage = damage;
-          bestType = type;
-        }
-      }
-    });
+    function calcBestDamage(movePower) {
+      let bestDamage = 0;
+      moveTypes.forEach(moveType => {
+        const stab = (attacker.Type1 === moveType || attacker.Type2 === moveType) ? 1.2 : 1;
+        const effectiveness = getDefensiveMultiplier(moveType, defenderType1, defenderType2);
+        if (effectiveness === 0) return; // immune
+        const damage = 0.5 * movePower * (attackerStats.attack / defenderStats.defense) * effectiveness * stab;
+        if (damage > bestDamage) bestDamage = damage;
+      });
+      return bestDamage;
+    }
 
-    if (bestDamage > 0) {
-      const label = attacker['G-max'] ? '(G-Max)' : attacker['D-max'] ? '(D-Max)' : '';
+    if (attacker['G-max']) {
       attackers.push({
-        name: `${attacker.Name} ${label}`.trim(),
-        bestDamage: bestDamage
+        name: `${attacker.Name} (G-Max)`,
+        movePower: 450,
+        bestDamage: calcBestDamage(450)
+      });
+    }
+
+    if (attacker['D-max']) {
+      attackers.push({
+        name: `${attacker.Name} (D-Max)`,
+        movePower: 350,
+        bestDamage: calcBestDamage(350)
+      });
+    }
+
+    // Only add base form if it's not a G-max or D-max form
+    if (!attacker['D-max'] && !attacker['G-max']) {
+      attackers.push({
+        name: attacker.Name,
+        movePower: 300,
+        bestDamage: calcBestDamage(300)
       });
     }
   });
@@ -168,3 +181,4 @@ function calculateCounters() {
   html += `</tbody></table>`;
   resultBox.innerHTML = html;
 }
+
