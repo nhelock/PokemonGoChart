@@ -431,6 +431,18 @@
         "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
         "Normal": false, "Poison": false, "Psychic": false, "Rock": false, "Steel": true, "Water": false
     },
+    {"Name": "Latios", "D-max": true, "G-max": false, "Type1": "Dragon", "Type2": "Psychic",
+
+        "Bug": false, "Dark": false, "Dragon": true, "Electric": false, "Fairy": false, "Fighting": false,
+        "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
+        "Normal": false, "Poison": false, "Psychic": true, "Rock": false, "Steel": false, "Water": false
+    },
+    {"Name": "Latias", "D-max": true, "G-max": false, "Type1": "Dragon", "Type2": "Psychic",
+
+        "Bug": false, "Dark": false, "Dragon": true, "Electric": false, "Fairy": true, "Fighting": false,
+        "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
+        "Normal": false, "Poison": false, "Psychic": true, "Rock": false, "Steel": false, "Water": false
+    },
 
 
 
@@ -447,6 +459,8 @@
         "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
         "Normal": true, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
     }
+
+
 
 
 
