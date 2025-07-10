@@ -23,9 +23,9 @@ const typeEffectiveness = {
   Fairy:      { Poison: 1.6, Steel: 1.6, Fighting: 0.625, Bug: 0.625, Dark: 0.625 }
 };
 
-function getDefensiveMultiplier(attackType, defenderType1, defenderType2) {
-  const type1Multiplier = typeEffectiveness[defenderType1]?.[attackType] ?? 1;
-  const type2Multiplier = defenderType2 ? (typeEffectiveness[defenderType2]?.[attackType] ?? 1) : 1;
+function getDefensiveMultiplier(moveType, defenderType1, defenderType2) {
+  const type1Multiplier = typeEffectiveness[defenderType1]?.[moveType] ?? 1;
+  const type2Multiplier = defenderType2 ? (typeEffectiveness[defenderType2]?.[moveType] ?? 1) : 1;
   return type1Multiplier * type2Multiplier;
 }
 
@@ -39,7 +39,6 @@ window.onload = () => {
     dynamaxEntries = dynamaxData;
     dynamaxNames = dynamaxEntries.map(e => e.Name);
 
-    //Create the dictionary to reference for entries
     pokemonData.forEach(entry => {
       pokemonStats[entry.Pokémon] = {
         attack: Number(entry.Attack),
@@ -50,7 +49,6 @@ window.onload = () => {
   })
   .catch(err => console.error("Error loading JSON data:", err));
 
-  // Enter key searches
   document.getElementById('searchBar').addEventListener('keydown', function(event) {
     if (event.key === 'Enter') {
       event.preventDefault();
@@ -60,18 +58,21 @@ window.onload = () => {
   });
 };
 
+document.addEventListener("click", e => {
+  if (!e.target.closest("#searchBar") && !e.target.closest("#suggestions")) {
+    document.getElementById("suggestions").innerHTML = '';
+  }
+});
+
 function showSuggestions() {
   const input = document.getElementById("searchBar");
   const suggestionsBox = document.getElementById("suggestions");
   const query = input.value.toLowerCase();
 
   suggestionsBox.innerHTML = '';
-
   if (query.length === 0) return;
 
-  const matches = dynamaxNames.filter(name =>
-    name.toLowerCase().startsWith(query)
-  ).slice(0, 5);
+  const matches = dynamaxNames.filter(name => name.toLowerCase().startsWith(query)).slice(0, 5);
 
   matches.forEach(name => {
     const div = document.createElement("div");
@@ -80,17 +81,11 @@ function showSuggestions() {
     div.onclick = () => {
       input.value = name;
       suggestionsBox.innerHTML = '';
-      calculateCounters();  
+      calculateCounters();
     };
     suggestionsBox.appendChild(div);
   });
 }
-
-document.addEventListener("click", e => {
-  if (!e.target.closest("#searchBar") && !e.target.closest("#suggestions")) {
-    document.getElementById("suggestions").innerHTML = '';
-  }
-});
 
 function calculateCounters() {
   const input = document.getElementById('searchBar').value.trim();
@@ -108,58 +103,42 @@ function calculateCounters() {
 
   const defenderType1 = bossEntry.Type1;
   const defenderType2 = bossEntry.Type2 || null;
-
   const defenderStats = pokemonStats[bossEntry.Name];
   if (!defenderStats) {
     resultBox.innerHTML = `<p>No stats found for raid boss "${bossEntry.Name}".</p>`;
     return;
   }
 
+  const movePower = bossEntry['G-max'] ? 450 : bossEntry['D-max'] ? 350 : 300;
+  const allTypes = Object.keys(typeEffectiveness);
+
   const attackers = [];
 
   dynamaxEntries.forEach(attacker => {
-    const attackerTypes = [attacker.Type1];
-    if (attacker.Type2) attackerTypes.push(attacker.Type2);
+    const stats = pokemonStats[attacker.Name];
+    if (!stats) return;
 
-    const attackerStats = pokemonStats[attacker.Name];
-    if (!attackerStats) return; 
+    let bestDamage = 0;
+    let bestType = '';
 
-    
-    function calcDamage(movePower) {
-      let bestDamage = 0;
-      attackerTypes.forEach(attType => {
-        const typeMult = getDefensiveMultiplier(attType, defenderType1, defenderType2);
-        if (typeMult === 0) return; // immune
-        const damage = 0.5 * movePower * (attackerStats.attack / defenderStats.defense) * typeMult;
-        if (damage > bestDamage) bestDamage = damage;
-      });
-      return bestDamage;
-    }
+    allTypes.forEach(type => {
+      if (attacker[type]) {
+        const typeMultiplier = getDefensiveMultiplier(type, defenderType1, defenderType2);
+        if (typeMultiplier === 0) return;
+        const stab = (type === attacker.Type1 || type === attacker.Type2) ? 1.2 : 1;
+        const damage = 0.5 * movePower * (stats.attack / defenderStats.defense) * typeMultiplier * stab;
+        if (damage > bestDamage) {
+          bestDamage = damage;
+          bestType = type;
+        }
+      }
+    });
 
-    // Add D-Max entry if available
-    if (attacker['D-max']) {
+    if (bestDamage > 0) {
+      const label = attacker['G-max'] ? '(G-Max)' : attacker['D-max'] ? '(D-Max)' : '';
       attackers.push({
-        name: `${attacker.Name} (D-Max)`,
-        movePower: 350,
-        bestDamage: calcDamage(350)
-      });
-    }
-
-    // Add G-Max entry if available
-    if (attacker['G-max']) {
-      attackers.push({
-        name: `${attacker.Name} (G-Max)`,
-        movePower: 450,
-        bestDamage: calcDamage(450)
-      });
-    }
-
-    // If neither D-Max nor G-Max, add normal entry with 300 power
-    if (!attacker['D-max'] && !attacker['G-max']) {
-      attackers.push({
-        name: attacker.Name,
-        movePower: 300,
-        bestDamage: calcDamage(300)
+        name: `${attacker.Name} ${label}`.trim(),
+        bestDamage: bestDamage
       });
     }
   });
@@ -187,6 +166,5 @@ function calculateCounters() {
   });
 
   html += `</tbody></table>`;
-
   resultBox.innerHTML = html;
 }
