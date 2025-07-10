@@ -116,11 +116,21 @@ function calculateCounters() {
     const attackerStats = pokemonStats[attacker.Name];
     if (!attackerStats) return;
 
-    const moveTypes = Object.keys(typeEffectiveness).filter(t => attacker[t]);
+    // Determine moveTypes depending on whether it's G-Max or not
+    let moveTypes;
+    if (attacker['G-max']) {
+      // Only primary type for G-Max moves
+      moveTypes = [attacker.Type1];
+    } else {
+      // All move types with true in the JSON for normal or D-Max forms
+      moveTypes = Object.keys(typeEffectiveness).filter(t => attacker[t]);
+    }
 
     function calcBestDamage(movePower) {
       let bestDamage = 0;
       moveTypes.forEach(moveType => {
+        if (!moveType) return; // safety check
+
         const stab = (attacker.Type1 === moveType || attacker.Type2 === moveType) ? 1.2 : 1;
         const effectiveness = getDefensiveMultiplier(moveType, defenderType1, defenderType2);
         if (effectiveness === 0) return; // immune
@@ -146,7 +156,6 @@ function calculateCounters() {
       });
     }
 
-    // Only add base form if it's not a G-max or D-max form
     if (!attacker['D-max'] && !attacker['G-max']) {
       attackers.push({
         name: attacker.Name,
@@ -181,4 +190,5 @@ function calculateCounters() {
   html += `</tbody></table>`;
   resultBox.innerHTML = html;
 }
+
 
