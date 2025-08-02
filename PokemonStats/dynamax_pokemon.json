@@ -458,6 +458,12 @@
         "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
         "Normal": true, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
+    },
+    {"Name": "Eternatus", "D-max": false, "G-max": true, "Type1": "Poison", "Type2": "Dragon",
+
+        "Bug": false, "Dark": false, "Dragon": true, "Electric": false, "Fairy": false, "Fighting": false,
+        "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
+        "Normal": false, "Poison": true, "Psychic": false, "Rock": false, "Steel": false, "Water": false
     }
 
 
