@@ -3,11 +3,11 @@ let dynamaxNames = [];
 let pokemonStats = {}; // key: Pokémon name, value: { attack, defense, hp }
 
 const typeEffectiveness = {
-  Normal:     { Fighting: 1.6, Ghost: 0 },
-  Fire:       { Water: 1.6, Ground: 1.6, Rock: 1.6, Bug: 0.625, Steel: 0.625, Fire: 0.625, Grass: 0.625, Ice: 0.625, Fairy: 0.625 },
-  Water:      { Electric: 1.6, Grass: 1.6, Fire: 0.625, Water: 0.625, Ice: 0.625, Steel: 0.625 },
-  Electric:   { Ground: 1.6, Electric: 0.625, Flying: 0.625, Steel: 0.625 },
-  Grass:      { Fire: 1.6, Ice: 1.6, Poison: 1.6, Flying: 1.6, Bug: 1.6, Water: 0.625, Electric: 0.625, Grass: 0.625, Ground: 0.625 },
+  Normal:     { Fighting: 1.6, Ghost: 0.244 },
+  Fire:       { Water: 1.6, Ground: 1.6, Rock: 1.6, Bug: 0.625, Steel: 0.625, Fire: 0.625, Grass: 0.625, Ice: 0.625, Fairy: 0.625, Dragon: 0.625 },
+  Water:      { Electric: 1.6, Grass: 1.6, Fire: 0.625, Water: 0.625, Ice: 0.625, Steel: 0.625, Dragon: 0.625 },
+  Electric:   { Ground: 1.6, Electric: 0.625, Flying: 0.625, Steel: 0.625, Dragon: 0.625 },
+  Grass:      { Fire: 1.6, Ice: 1.6, Poison: 1.6, Flying: 1.6, Bug: 1.6, Water: 0.625, Electric: 0.625, Grass: 0.625, Ground: 0.625, Dragon: 0.625 },
   Ice:        { Fire: 1.6, Fighting: 1.6, Rock: 1.6, Steel: 1.6, Ice: 0.625 },
   Fighting:   { Flying: 1.6, Psychic: 1.6, Fairy: 1.6, Bug: 0.625, Rock: 0.625, Dark: 0.625 },
   Poison:     { Ground: 1.6, Psychic: 1.6, Fighting: 0.625, Poison: 0.625, Bug: 0.625, Fairy: 0.625 },
@@ -16,9 +16,9 @@ const typeEffectiveness = {
   Psychic:    { Bug: 1.6, Ghost: 1.6, Dark: 1.6, Fighting: 0.625, Psychic: 0.625 },
   Bug:        { Fire: 1.6, Flying: 1.6, Rock: 1.6, Fighting: 0.625, Ground: 0.625, Grass: 0.625 },
   Rock:       { Water: 1.6, Grass: 1.6, Fighting: 1.6, Ground: 1.6, Steel: 1.6, Normal: 0.625, Fire: 0.625, Poison: 0.625, Flying: 0.625 },
-  Ghost:      { Ghost: 1.6, Dark: 1.6, Normal: 0, Fighting: 0 },
+  Ghost:      { Ghost: 1.6, Dark: 1.6, Normal: 0.244, Fighting: 0.244 },
   Dragon:     { Ice: 1.6, Dragon: 1.6, Fairy: 1.6 },
-  Dark:       { Fighting: 1.6, Bug: 1.6, Fairy: 1.6, Ghost: 0.625, Dark: 0.625, Psychic: 0 },
+  Dark:       { Fighting: 1.6, Bug: 1.6, Fairy: 1.6, Ghost: 0.625, Dark: 0.625, Psychic: 0.244 },
   Steel:      { Fire: 1.6, Fighting: 1.6, Ground: 1.6, Normal: 0.625, Grass: 0.625, Ice: 0.625, Flying: 0.625, Psychic: 0.625, Bug: 0.625, Rock: 0.625, Dragon: 0.625, Steel: 0.625, Fairy: 0.625 },
   Fairy:      { Poison: 1.6, Steel: 1.6, Fighting: 0.625, Bug: 0.625, Dark: 0.625 }
 };
