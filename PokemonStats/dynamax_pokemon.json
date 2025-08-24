@@ -215,11 +215,11 @@
         "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": true, "Ice": false,
         "Normal": false, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": true
     },
-    {"Name": "Kingler", "D-max": true, "G-max": false, "Type1": "Water", "Type2": false,
+    {"Name": "Kingler", "D-max": true, "G-max": true, "Type1": "Water", "Type2": false,
 
-        "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": true,
+        "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
-        "Normal": false, "Poison": false, "Psychic": false, "Rock": false, "Steel": true, "Water": false
+        "Normal": false, "Poison": false, "Psychic": false, "Rock": false, "Steel": true, "Water": true
     },
     {"Name": "Cryogonal", "D-max": true, "G-max": false, "Type1": "Ice", "Type2": false,
 
