@@ -11702,5 +11702,16 @@
         "Max CP(Lv. 40)": "3067",
         "Max CP(Lv. 50)": "3468",
         "Max CP(Max Buddy Boost [Lv. 51])": "3509"
+    },
+    {
+        "#": "0861",
+        "Pokémon": "Grimmsnarl",
+        "HP": "216",
+        "Attack": "227",
+        "Defense": "139",
+        "Product": "6815448",
+        "Max CP(Lv. 40)": "2850",
+        "Max CP(Lv. 50)": "3222",
+        "Max CP(Max Buddy Boost [Lv. 51])": "3252"
     }
 ]
