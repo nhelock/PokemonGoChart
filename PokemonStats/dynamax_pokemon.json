@@ -732,6 +732,18 @@
         "Bug": false, "Dark": false, "Dragon": true, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
         "Normal": false, "Poison": true, "Psychic": false, "Rock": false, "Steel": false, "Water": false
+    },
+    {"Name": "Meowth", "D-max": false, "G-max": true, "Type1": "Normal", "Type2": false,
+
+        "Bug": false, "Dark": true, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
+        "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
+        "Normal": true, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
+    },
+    {"Name": "Grimmsnarl", "D-max": false, "G-max": true, "Type1": "Dark", "Type2": "Fairy",
+
+        "Bug": false, "Dark": true, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": true,
+        "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
+        "Normal": false, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
     }
 
     
