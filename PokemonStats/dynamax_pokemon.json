@@ -709,6 +709,12 @@
         "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": true,
         "Normal": true, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
     },
+    {"Name": "Regirock", "D-max": true, "G-max": false, "Type1": "Rock", "Type2": false,
+
+        "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": true,
+        "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
+        "Normal": true, "Poison": false, "Psychic": false, "Rock": true, "Steel": false, "Water": false
+    },
 
 
 
