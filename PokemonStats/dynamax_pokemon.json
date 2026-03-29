@@ -719,6 +719,28 @@
 
 
 
+    {"Name": "Trapinch", "D-max": true, "G-max": false, "Type1": "Ground", "Type2": false,
+
+        "Bug": true, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
+        "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": true, "Ice": false,
+        "Normal": false, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
+    },
+    {"Name": "Vibrava", "D-max": true, "G-max": false, "Type1": "Ground", "Type2": "Dragon",
+
+        "Bug": false, "Dark": false, "Dragon": true, "Electric": false, "Fairy": false, "Fighting": false,
+        "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": true, "Ice": false,
+        "Normal": false, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
+    },
+    {"Name": "Flygon", "D-max": true, "G-max": false, "Type1": "Ground", "Type2": "Dragon",
+
+        "Bug": false, "Dark": false, "Dragon": true, "Electric": false, "Fairy": false, "Fighting": false,
+        "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": true, "Ice": false,
+        "Normal": false, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
+    },
+
+
+
+
 
 
     {"Name": "Lapras", "D-max": false, "G-max": true, "Type1": "Ice", "Type2": "Water",
