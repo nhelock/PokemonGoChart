@@ -71,5 +71,49 @@
     </div>
 
     <script src="./JS/baseStats.js"></script>
+
+    <script type="module">
+
+  // Import the functions you need from the SDKs you need
+
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
+
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-analytics.js";
+
+  // TODO: Add SDKs for Firebase products that you want to use
+
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+
+  // Your web app's Firebase configuration
+
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
+  const firebaseConfig = {
+
+    apiKey: "AIzaSyDwD16FWnhylTmZDUAY7YNDeNhVBLJwibs",
+
+    authDomain: "pokemon-go-dynamax-ranking.firebaseapp.com",
+
+    projectId: "pokemon-go-dynamax-ranking",
+
+    storageBucket: "pokemon-go-dynamax-ranking.firebasestorage.app",
+
+    messagingSenderId: "335953320369",
+
+    appId: "1:335953320369:web:3260b4cc6839c41378c590",
+
+    measurementId: "G-LGXR6LYZ29"
+
+  };
+
+
+  // Initialize Firebase
+
+  const app = initializeApp(firebaseConfig);
+
+  const analytics = getAnalytics(app);
+
+</script>
 </body>
 </html>
