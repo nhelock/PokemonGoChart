@@ -12,7 +12,7 @@ const typeEffectiveness = {
   Fighting:   { Flying: 1.6, Psychic: 1.6, Fairy: 1.6, Bug: 0.625, Rock: 0.625, Dark: 0.625 },
   Poison:     { Ground: 1.6, Psychic: 1.6, Fighting: 0.625, Poison: 0.625, Bug: 0.625, Fairy: 0.625 },
   Ground:     { Water: 1.6, Grass: 1.6, Ice: 1.6, Poison: 0.625, Rock: 0.625 },
-  Flying:     { Electric: 1.6, Ice: 1.6, Rock: 1.6, Fighting: 0.625, Bug: 0.625, Grass: 0.625 },
+  Flying:     { Electric: 1.6, Ice: 1.6, Rock: 1.6, Fighting: 0.625, Bug: 0.625, Grass: 0.625, Ground: 0.244 },
   Psychic:    { Bug: 1.6, Ghost: 1.6, Dark: 1.6, Fighting: 0.625, Psychic: 0.625 },
   Bug:        { Fire: 1.6, Flying: 1.6, Rock: 1.6, Fighting: 0.625, Ground: 0.625, Grass: 0.625 },
   Rock:       { Water: 1.6, Grass: 1.6, Fighting: 1.6, Ground: 1.6, Steel: 1.6, Normal: 0.625, Fire: 0.625, Poison: 0.625, Flying: 0.625 },
