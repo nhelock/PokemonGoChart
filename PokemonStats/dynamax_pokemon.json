@@ -740,7 +740,7 @@
         "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
         "Normal": true, "Poison": false, "Psychic": false, "Rock": true, "Steel": false, "Water": false
     },
-    {"Name": "Registeel", "D-max": true, "G-max": false, "Type1": "Rock", "Type2": false,
+    {"Name": "Registeel", "D-max": true, "G-max": false, "Type1": "Steel", "Type2": false,
 
         "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": true,
         "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
