@@ -703,6 +703,31 @@
         "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
         "Normal": false, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
     },
+    {"Name": "Cottonee", "D-max": true, "G-max": false, "Type1": "Grass", "Type2": "Fairy",
+
+        "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": true, "Fighting": false,
+        "Fire": false, "Flying": false, "Ghost": false, "Grass": true, "Ground": false, "Ice": false,
+        "Normal": false, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
+    },
+    {"Name": "Whimsicott", "D-max": true, "G-max": false, "Type1": "Grass", "Type2": "Fairy",
+
+        "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": true, "Fighting": false,
+        "Fire": false, "Flying": false, "Ghost": false, "Grass": true, "Ground": false, "Ice": false,
+        "Normal": false, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
+    },
+    {"Name": "Combee", "D-max": true, "G-max": false, "Type1": "Bug", "Type2": "Flying",
+
+        "Bug": true, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
+        "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
+        "Normal": false, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
+    },
+    {"Name": "Vespiqueen", "D-max": true, "G-max": false, "Type1": "Bug", "Type2": "Flying",
+
+        "Bug": true, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
+        "Fire": false, "Flying": true, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
+        "Normal": false, "Poison": true, "Psychic": false, "Rock": false, "Steel": false, "Water": false
+    },
+
     {"Name": "Regice", "D-max": true, "G-max": false, "Type1": "Ice", "Type2": false,
 
         "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": true,
@@ -714,6 +739,12 @@
         "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": true,
         "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
         "Normal": true, "Poison": false, "Psychic": false, "Rock": true, "Steel": false, "Water": false
+    },
+    {"Name": "Registeel", "D-max": true, "G-max": false, "Type1": "Rock", "Type2": false,
+
+        "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": true,
+        "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
+        "Normal": true, "Poison": false, "Psychic": false, "Rock": false, "Steel": true, "Water": false
     },
 
 
