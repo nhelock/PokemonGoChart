@@ -768,6 +768,33 @@
         "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": true, "Ice": false,
         "Normal": false, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
     },
+    {"Name": "Electabuzz", "D-max": true, "G-max": false, "Type1": "Electric", "Type2": false,
+
+        "Bug": false, "Dark": false, "Dragon": false, "Electric": true, "Fairy": false, "Fighting": true,
+        "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
+        "Normal": false, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
+    },
+    {"Name": "Electivire", "D-max": true, "G-max": false, "Type1": "Electric", "Type2": false,
+
+        "Bug": false, "Dark": false, "Dragon": false, "Electric": true, "Fairy": false, "Fighting": true,
+        "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
+        "Normal": false, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
+    },
+    {"Name": "Hoothoot", "D-max": true, "G-max": false, "Type1": "Normal", "Type2": "Flying",
+
+        "Bug": false, "Dark": true, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
+        "Fire": false, "Flying": true, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
+        "Normal": false, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
+    },
+        {"Name": "Noctowl", "D-max": true, "G-max": false, "Type1": "Normal", "Type2": "Flying",
+
+        "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
+        "Fire": false, "Flying": true, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
+        "Normal": false, "Poison": false, "Psychic": true, "Rock": false, "Steel": false, "Water": false
+    },
+
+
+
 
 
 
