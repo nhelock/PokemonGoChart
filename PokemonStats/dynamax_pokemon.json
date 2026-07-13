@@ -786,11 +786,41 @@
         "Fire": false, "Flying": true, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
         "Normal": false, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
     },
-        {"Name": "Noctowl", "D-max": true, "G-max": false, "Type1": "Normal", "Type2": "Flying",
+    {"Name": "Noctowl", "D-max": true, "G-max": false, "Type1": "Normal", "Type2": "Flying",
 
         "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
         "Fire": false, "Flying": true, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
         "Normal": false, "Poison": false, "Psychic": true, "Rock": false, "Steel": false, "Water": false
+    },
+    {"Name": "Deino", "D-max": true, "G-max": false, "Type1": "Dark", "Type2": "Dragon",
+
+        "Bug": false, "Dark": false, "Dragon": true, "Electric": false, "Fairy": false, "Fighting": false,
+        "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
+        "Normal": true, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
+    },
+    {"Name": "Zweilous", "D-max": true, "G-max": false, "Type1": "Dark", "Type2": "Dragon",
+
+        "Bug": false, "Dark": true, "Dragon": true, "Electric": false, "Fairy": false, "Fighting": false,
+        "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
+        "Normal": false, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
+    },
+    {"Name": "Hydreigon", "D-max": true, "G-max": false, "Type1": "Dark", "Type2": "Dragon",
+
+        "Bug": false, "Dark": true, "Dragon": true, "Electric": false, "Fairy": false, "Fighting": false,
+        "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
+        "Normal": false, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": false
+    },
+    {"Name": "Feebas", "D-max": true, "G-max": false, "Type1": "Water", "Type2": false,
+
+        "Bug": false, "Dark": false, "Dragon": false, "Electric": false, "Fairy": false, "Fighting": false,
+        "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
+        "Normal": true, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": true
+    },
+    {"Name": "Milotic", "D-max": true, "G-max": false, "Type1": "Water", "Type2": false,
+
+        "Bug": false, "Dark": false, "Dragon": true, "Electric": false, "Fairy": false, "Fighting": false,
+        "Fire": false, "Flying": false, "Ghost": false, "Grass": false, "Ground": false, "Ice": false,
+        "Normal": false, "Poison": false, "Psychic": false, "Rock": false, "Steel": false, "Water": true
     },
 
 
